@@ -155,7 +155,11 @@ const V2 = () => {
           <div style={{ fontSize: 14, fontWeight: 500, letterSpacing: '-0.01em' }}>François Hellebuyck</div>
         </div>
         <div style={{ display: 'flex', gap: 32, fontSize: 13, color: C.dim }}>
-          <span>À propos</span><span>Projets</span><span>Compétences</span><span>Expérience</span><span>Contact</span>
+          {[['#about','À propos'],['#projects','Projets'],['#skills','Compétences'],['#experience','Expérience'],['#contact','Contact']].map(([href, label]) => (
+            <a key={href} href={href} style={{ color: 'inherit', textDecoration: 'none', transition: 'color 200ms' }}
+              onMouseEnter={e => e.target.style.color = C.accent}
+              onMouseLeave={e => e.target.style.color = C.dim}>{label}</a>
+          ))}
         </div>
         <button onClick={() => setTheme(dark ? 'light' : 'dark')} style={{
           background: C.panel, border: `1px solid ${C.border}`, color: C.text,
@@ -202,7 +206,7 @@ const V2 = () => {
               <a style={{
                 color: C.text, padding: '14px 22px', fontSize: 14, fontWeight: 500,
                 textDecoration: 'none', border: `1px solid ${C.border}`, borderRadius: vibe.radius,
-              }}>linkedin.com/in/fhellebuyck</a>
+              }} href="https://linkedin.com/in/fhellebuyck" target="_blank" rel="noopener">linkedin.com/in/fhellebuyck</a>
             </div>
           </div>
 
@@ -246,7 +250,7 @@ const V2 = () => {
       </section>
 
       {/* About */}
-      <section style={{ padding: `${D.sectionY}px ${D.padX}px`, borderTop: `1px solid ${C.border}`, background: C.bg2 }}>
+      <section id="about" style={{ padding: `${D.sectionY}px ${D.padX}px`, borderTop: `1px solid ${C.border}`, background: C.bg2 }}>
         <Eyebrow C={C} vibe={vibe} num="01" label="À propos" />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, marginTop: 40, alignItems: 'start' }}>
           <h2 style={{ fontSize: D.h2, fontWeight: 500, lineHeight: 1.1, margin: 0, letterSpacing: '-0.02em', fontFamily: vibe.headFont }}>
@@ -267,7 +271,7 @@ const V2 = () => {
       </section>
 
       {/* Projects */}
-      <section style={{ padding: `${D.sectionY}px ${D.padX}px` }}>
+      <section id="projects" style={{ padding: `${D.sectionY}px ${D.padX}px` }}>
         <Eyebrow C={C} vibe={vibe} num="02" label="Projets" />
         <div style={{ marginTop: 28, display: 'flex', gap: 14, alignItems: 'center' }}>
           <a href="https://github.com/hellebuyckf" target="_blank" rel="noopener" aria-label="GitHub" title="github.com/hellebuyckf" style={{
@@ -335,7 +339,7 @@ const V2 = () => {
       </section>
 
       {/* Skills */}
-      <section style={{ padding: `${D.sectionY}px ${D.padX}px`, borderTop: `1px solid ${C.border}`, background: C.bg2 }}>
+      <section id="skills" style={{ padding: `${D.sectionY}px ${D.padX}px`, borderTop: `1px solid ${C.border}`, background: C.bg2 }}>
         <Eyebrow C={C} vibe={vibe} num="03" label="Stack technique" />
         <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: D.gap }}>
           {[
@@ -364,7 +368,7 @@ const V2 = () => {
       </section>
 
       {/* Experience */}
-      <section style={{ padding: `${D.sectionY}px ${D.padX}px` }}>
+      <section id="experience" style={{ padding: `${D.sectionY}px ${D.padX}px` }}>
         <Eyebrow C={C} vibe={vibe} num="04" label="Parcours" />
         <div style={{ marginTop: 48, position: 'relative' }}>
           <div style={{ position: 'absolute', left: 140, top: 0, bottom: 0, width: 1, background: C.border }} />
@@ -388,7 +392,7 @@ const V2 = () => {
       </section>
 
       {/* Contact */}
-      <section style={{ padding: `${D.sectionY + 20}px ${D.padX}px`, borderTop: `1px solid ${C.border}`, background: C.bg2, position: 'relative', overflow: 'hidden' }}>
+      <section id="contact" style={{ padding: `${D.sectionY + 20}px ${D.padX}px`, borderTop: `1px solid ${C.border}`, background: C.bg2, position: 'relative', overflow: 'hidden' }}>
         <svg viewBox="0 0 1600 100" style={{ position: 'absolute', bottom: 40, left: 0, width: '100%', opacity: ecgOpacityFooter }}>
           <path d={ecgPath(1600, 100)} fill="none" stroke={C.accent} strokeWidth={ecgStroke} />
         </svg>
@@ -405,7 +409,7 @@ const V2 = () => {
             display: 'inline-flex', alignItems: 'center', gap: 12, marginTop: 32,
             background: C.accent, color: C.bg, padding: '16px 28px', borderRadius: vibe.radius,
             fontSize: 15, fontWeight: 600, textDecoration: 'none',
-          }}>linkedin.com/in/fhellebuyck →</a>
+          }} href="https://linkedin.com/in/fhellebuyck" target="_blank" rel="noopener">linkedin.com/in/fhellebuyck →</a>
         </div>
         <div style={{
           marginTop: 80, display: 'flex', justifyContent: 'space-between',
