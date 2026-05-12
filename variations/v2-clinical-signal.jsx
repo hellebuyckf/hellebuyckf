@@ -69,7 +69,7 @@ const DENSITY = {
 
 const V2 = () => {
   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  const [theme, setTheme] = React.useState('dark');
+  const [theme, setTheme] = React.useState(() => localStorage.getItem('pf-theme') || 'dark');
   const dark = theme === 'dark';
 
   const vibe = VIBES[tweaks.vibe] || VIBES.clinical;
@@ -161,7 +161,7 @@ const V2 = () => {
               onMouseLeave={e => e.target.style.color = C.dim}>{label}</a>
           ))}
         </div>
-        <button onClick={() => setTheme(dark ? 'light' : 'dark')} style={{
+        <button onClick={() => { const t = dark ? 'light' : 'dark'; setTheme(t); localStorage.setItem('pf-theme', t); }} style={{
           background: C.panel, border: `1px solid ${C.border}`, color: C.text,
           padding: '8px 14px', fontFamily: vibe.monoFont, fontSize: 11,
           cursor: 'pointer', borderRadius: 999, letterSpacing: '0.06em',
@@ -170,20 +170,22 @@ const V2 = () => {
 
       {/* Hero */}
       <section style={{ padding: `${D.heroY}px ${D.padX}px ${D.sectionY}px`, position: 'relative', zIndex: 1 }}>
+        {/* Badge positionné en haut à droite, au-dessus de la ligne ECG */}
+        <div style={{
+          position: 'absolute', top: 18, right: D.padX,
+          display: 'inline-flex', alignItems: 'center', gap: 10,
+          padding: '6px 14px', borderRadius: 999, border: `1px solid ${C.border}`,
+          fontFamily: vibe.monoFont, fontSize: 11, color: C.accent,
+          letterSpacing: '0.06em',
+        }}>
+          <span style={{
+            width: 6, height: 6, borderRadius: '50%', background: C.accent,
+            boxShadow: dotPulse,
+          }}/>
+          SIGNAL ACTIF · DISPONIBLE
+        </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 64, alignItems: 'center' }}>
           <div>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              padding: '6px 14px', borderRadius: 999, border: `1px solid ${C.border}`,
-              fontFamily: vibe.monoFont, fontSize: 11, color: C.accent,
-              letterSpacing: '0.06em', marginBottom: 32,
-            }}>
-              <span style={{
-                width: 6, height: 6, borderRadius: '50%', background: C.accent,
-                boxShadow: dotPulse,
-              }}/>
-              SIGNAL ACTIF · DISPONIBLE
-            </div>
             <h1 style={{
               fontSize: D.h1, lineHeight: 0.98, fontWeight: 500, margin: 0,
               letterSpacing: '-0.035em', fontFamily: vibe.headFont,
@@ -340,7 +342,21 @@ const V2 = () => {
 
       {/* Skills */}
       <section id="skills" style={{ padding: `${D.sectionY}px ${D.padX}px`, borderTop: `1px solid ${C.border}`, background: C.bg2 }}>
-        <Eyebrow C={C} vibe={vibe} num="03" label="Stack technique" />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+          <Eyebrow C={C} vibe={vibe} num="03" label="Stack technique" />
+          <a href="carte-mentale.html" style={{
+            fontFamily: vibe.monoFont, fontSize: 11, letterSpacing: '0.12em',
+            color: C.accent, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
+            padding: '6px 12px', border: `1px solid ${C.accent}44`, borderRadius: 999,
+            transition: 'all .2s ease',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = C.accent + '18'; e.currentTarget.style.borderColor = C.accent; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = C.accent + '44'; }}
+          >
+            Voir la carte mentale
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
         <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: D.gap }}>
           {[
             { g: 'LLM & IA Générative', items: ['LangChain', 'HuggingFace', 'Fine-tuning', 'RAG', 'ChromaDB', 'Prompt Engineering'] },
@@ -373,9 +389,9 @@ const V2 = () => {
         <div style={{ marginTop: 48, position: 'relative' }}>
           <div style={{ position: 'absolute', left: 140, top: 0, bottom: 0, width: 1, background: C.border }} />
           {[
-            { y: 'JUIN 2025 →', t: 'AI Engineer', sub: 'OpenClassrooms', d: 'Formation diplômante RNCP Niveau 7 (Bac+5)  · 804h + 15 projets pratiques. Spécialisation IA appliquée : LLM, RAG, fine-tuning, déploiement.' },
-            { y: '2013 → 2025', t: 'Architecte Technique Senior', sub: 'CGI', d: 'Paris (2013–2016) · Montpellier (2016–2025) · Hybride. Missions grands comptes : Télécom, Finance, Industrie, Énergie. Conception et exploitation de plateformes data critiques.' },
-            { y: '1997 → 2012', t: 'Architecte Technique / Expert JEE / Ingénieur', sub: 'Logica (acquis par CGI)', d: 'Paris · Secteurs : Télécom, Finance, Énergie, Industrie. Développement, expertise JEE, architecture applicative.' },
+            { y: 'JUIN 2025 →', t: 'AI Engineer', sub: 'OpenClassrooms', subColor: 'rgb(46.3% 31.8% 92.2%)', d: <>Formation diplômante RNCP Niveau 7 (Bac+5)&nbsp; · 804h + <a href="carte-mentale.html" style={{ color: C.accent, textDecoration: 'underline', textDecorationColor: C.accent, textUnderlineOffset: 4 }}>14 projets pratiques et un projet de fin d'étude</a>. Spécialisation IA appliquée : LLM, RAG, fine-tuning, déploiement.</> },
+            { y: '2013 → 2025', t: 'Architecte Technique Senior', sub: 'CGI', subColor: 'rgb(88.3% 13.1% 21.4%)', d: 'Paris (2013–2016) · Montpellier (2016–2025) · Hybride. Missions grands comptes : Télécom, Finance, Industrie, Énergie. Conception et exploitation de plateformes data critiques.' },
+            { y: '1997 → 2012', t: 'Architecte Technique / Expert JEE / Ingénieur', sub: <><span style={{ color: 'rgb(100% 80% 0%)' }}>Logica</span> (acquis par <span style={{ color: 'rgb(88.3% 13.1% 21.4%)' }}>CGI</span>)</>, d: 'Paris · Secteurs : Télécom, Finance, Énergie, Industrie. Développement, expertise JEE, architecture applicative.' },
           ].map((e, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '120px 40px 1fr', gap: 24, paddingBottom: 40, alignItems: 'start' }}>
               <div style={{ fontFamily: vibe.monoFont, fontSize: 12, color: C.accent, letterSpacing: '0.06em', paddingTop: 6 }}>{e.y}</div>
@@ -383,7 +399,7 @@ const V2 = () => {
                 <div style={{ width: 11, height: 11, borderRadius: '50%', background: C.bg, border: `2px solid ${C.accent}` }} />
               </div>
               <div>
-                <div style={{ fontSize: 24, fontWeight: 500, fontFamily: vibe.headFont }}>{e.t}{e.sub ? <span style={{ color: C.dim, fontWeight: 400, fontSize: 18 }}> · {e.sub}</span> : null}</div>
+                <div style={{ fontSize: 24, fontWeight: 500, fontFamily: vibe.headFont }}>{e.t}{e.sub ? <span style={{ color: e.subColor || C.dim, fontWeight: 400, fontSize: 18 }}> · {e.sub}</span> : null}</div>
                 <div style={{ fontSize: 15, color: C.dim, marginTop: 8, lineHeight: 1.6, maxWidth: 700 }}>{e.d}</div>
               </div>
             </div>

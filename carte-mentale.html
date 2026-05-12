@@ -1,0 +1,1092 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Carte mentale du parcours — AI Engineer · François Hellebuyck</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Carte mentale interactive des 14 projets du parcours AI Engineer (RNCP Niveau 7, OpenClassrooms) — François Hellebuyck." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-0: #07090B;
+    --bg-1: #0A0F12;
+    --bg-2: #0F161B;
+    --ink-1: #E8EFF1;
+    --ink-2: #B6C2C7;
+    --ink-3: #6F7B81;
+    --line:  #1B262D;
+    --accent: oklch(0.82 0.13 195);
+    --accent-deep: oklch(0.62 0.13 195);
+
+    --c-fondations: #34D399;
+    --c-supervise:  #22D3EE;
+    --c-mlops:      #60A5FA;
+    --c-methodo:    #A78BFA;
+    --c-vision:     #F472B6;
+    --c-genai:      #FBBF24;
+  }
+
+  /* ───────── Light mode ───────── */
+  html.light {
+    --bg-0: #F0F5F7;
+    --bg-1: #E4EDF1;
+    --bg-2: #D6E3E9;
+    --ink-1: #0C1B22;
+    --ink-2: #36505D;
+    --ink-3: #6A8795;
+    --line:  #B5CAD3;
+    --accent: oklch(0.48 0.14 195);
+    --accent-deep: oklch(0.36 0.14 195);
+    /* Couleurs catégories remplacées par des variantes sombres pour contraste sur fond clair */
+    --c-fondations: #059669;
+    --c-supervise:  #0891B2;
+    --c-mlops:      #2563EB;
+    --c-methodo:    #7C3AED;
+    --c-vision:     #DB2777;
+    --c-genai:      #D97706;
+  }
+  /* Propagation de la couleur catégorie via custom property héritée */
+  html.light [data-cat="fondations"] { --cat-col: var(--c-fondations); }
+  html.light [data-cat="supervise"]  { --cat-col: var(--c-supervise); }
+  html.light [data-cat="mlops"]      { --cat-col: var(--c-mlops); }
+  html.light [data-cat="methodo"]    { --cat-col: var(--c-methodo); }
+  html.light [data-cat="vision"]     { --cat-col: var(--c-vision); }
+  html.light [data-cat="genai"]      { --cat-col: var(--c-genai); }
+  /* Nœuds projet */
+  html.light .node-card .pill   { stroke: var(--cat-col); }
+  html.light .node-card .glow   { fill:   var(--cat-col); }
+  html.light .node-card circle  { fill:   var(--cat-col); }
+  html.light .node-card .num    { fill:   var(--cat-col); }
+  /* Pilules catégories */
+  html.light .cat-group .cat-bubble { stroke: var(--cat-col); }
+  html.light .cat-group .cat-label  { fill:   var(--cat-col); }
+  html.light .cat-group circle      { fill:   var(--cat-col); }
+  /* Lignes de connexion (inline style → !important requis) */
+  html.light .conn-cat { stroke: var(--cat-col) !important; stroke-opacity: 0.7; }
+  html.light .conn     { stroke: var(--cat-col) !important; stroke-opacity: 0.35; }
+  /* Panneau détail */
+  html.light .details .num-tag { color: var(--cat-col) !important; }
+  html.light body {
+    background:
+      radial-gradient(1100px 700px at 75% -10%, oklch(0.72 0.08 195 / 0.22), transparent 60%),
+      radial-gradient(900px 600px at 10% 110%, oklch(0.72 0.10 320 / 0.15), transparent 60%),
+      var(--bg-0);
+  }
+  html.light .mindmap-wrap {
+    background:
+      radial-gradient(60% 60% at 50% 50%, oklch(0.78 0.05 200 / 0.30), transparent 70%),
+      linear-gradient(180deg, oklch(0.88 0.02 200 / 0.5), oklch(0.93 0.02 200 / 0.3));
+  }
+  html.light .mindmap-wrap::before {
+    background: radial-gradient(420px 220px at 50% 0%, oklch(0.65 0.10 195 / 0.10), transparent 60%);
+  }
+  html.light .orbit-rings { opacity: 0.12; }
+  html.light .hub-glow { opacity: 0.18; }
+  html.light .hub-ring { stroke: oklch(0.45 0.13 195 / 0.45); }
+  html.light .hub-core { stroke: oklch(0.45 0.12 195 / 0.55); }
+  html.light .conn { stroke: oklch(0.58 0.05 200 / 0.45); }
+  html.light .conn-cat { stroke: oklch(0.52 0.08 200 / 0.45); }
+  html.light .cat-bubble { fill: oklch(0.90 0.02 200 / 0.92); }
+  html.light .node-card .pill { fill: oklch(0.92 0.015 200 / 0.96); }
+  html.light .node-card.active .pill { fill: oklch(0.85 0.04 200 / 0.96); }
+  html.light .details {
+    background: linear-gradient(180deg, oklch(0.90 0.02 200 / 0.92), oklch(0.94 0.015 200 / 0.75));
+  }
+  html.light .details .block {
+    background: oklch(0.95 0.01 200 / 0.65);
+    border-color: var(--line);
+  }
+  html.light .details .chip {
+    background: oklch(0.87 0.02 200 / 0.75);
+    border-color: oklch(0.72 0.04 200 / 0.6);
+    color: var(--ink-1);
+  }
+  html.light .details .status {
+    background: oklch(0.75 0.10 145 / 0.15);
+    color: oklch(0.38 0.13 145);
+  }
+  html.light .legend {
+    background: oklch(0.91 0.01 200 / 0.65);
+  }
+  html.light .legend .item:hover {
+    background: oklch(0.85 0.02 200 / 0.75);
+  }
+
+  /* ───────── Toggle thème ───────── */
+  #theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all .2s ease;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  #theme-toggle:hover { border-color: var(--accent); color: var(--ink-1); }
+  .icon-moon { display: none; }
+  html.light .icon-sun  { display: none; }
+  html.light .icon-moon { display: block; }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100%; }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(1100px 700px at 75% -10%, oklch(0.30 0.07 195 / 0.18), transparent 60%),
+      radial-gradient(900px 600px at 10% 110%, oklch(0.30 0.12 320 / 0.12), transparent 60%),
+      var(--bg-0);
+    color: var(--ink-1);
+    font-family: "Inter Tight", system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: oklch(0.78 0.12 195 / 0.4); color: #fff; }
+
+  /* ───────── Layout ───────── */
+  .page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 56px) clamp(16px, 4vw, 48px) 96px;
+  }
+
+  /* ───────── Topbar ───────── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: clamp(32px, 5vw, 64px);
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .topbar a.back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    transition: all .2s ease;
+  }
+  .topbar a.back:hover { border-color: var(--accent); color: var(--ink-1); }
+  .topbar .meta { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--ink-3); text-transform: uppercase; }
+
+  /* ───────── Hero ───────── */
+  .hero { text-align: center; margin-bottom: clamp(28px, 4vw, 56px); }
+  .hero .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent);
+    padding: 6px 14px;
+    border: 1px solid oklch(0.62 0.13 195 / 0.4);
+    border-radius: 999px;
+    background: oklch(0.30 0.07 195 / 0.10);
+  }
+  .hero .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .hero h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(34px, 6.4vw, 72px);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin: 18px auto 14px;
+    max-width: 16ch;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero p.lead {
+    color: var(--ink-2);
+    font-size: clamp(15px, 1.6vw, 18px);
+    max-width: 58ch;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .hero .stats {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(14px, 3vw, 40px);
+    margin-top: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero .stat { text-align: center; }
+  .hero .stat b {
+    display: block;
+    font-family: "Fraunces", serif;
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 500;
+    color: var(--ink-1);
+  }
+  .hero .stat span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  /* ───────── Mindmap container ───────── */
+  .mindmap-wrap {
+    position: relative;
+    margin: clamp(20px, 4vw, 48px) auto 0;
+    background:
+      radial-gradient(60% 60% at 50% 50%, oklch(0.18 0.04 200 / 0.45), transparent 70%),
+      linear-gradient(180deg, oklch(0.14 0.02 200 / 0.4), oklch(0.10 0.02 200 / 0.2));
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: clamp(8px, 2vw, 28px);
+    overflow: hidden;
+  }
+  .mindmap-wrap::before {
+    content: "";
+    position: absolute; inset: -1px;
+    background:
+      radial-gradient(420px 220px at 50% 0%, oklch(0.30 0.10 195 / 0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .mindmap-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 86vh;
+  }
+
+  /* SVG style hooks */
+  .conn { stroke: oklch(0.30 0.03 200 / 0.65); stroke-width: 1.2; fill: none; }
+  .conn-cat { stroke: oklch(0.40 0.05 200 / 0.55); stroke-width: 1.6; fill: none; stroke-dasharray: 4 4; opacity: 0.7; }
+
+  .hub-glow { filter: blur(28px); opacity: 0.55; }
+  .hub-ring { fill: none; stroke: oklch(0.62 0.13 195 / 0.6); stroke-width: 1; }
+  .hub-core { fill: var(--bg-1); stroke: oklch(0.78 0.12 195 / 0.7); stroke-width: 1.4; }
+  .hub-label-line1 { font-family: "JetBrains Mono", monospace; font-size: 13px; letter-spacing: 0.16em; fill: var(--accent); text-transform: uppercase; }
+  .hub-label-line2 { font-family: "Fraunces", serif; font-style: italic; font-weight: 500; font-size: 22px; fill: var(--ink-1); }
+  .hub-label-line3 { font-family: "Fraunces", serif; font-weight: 500; font-size: 22px; fill: var(--ink-1); }
+  .hub-label-line4 { font-family: "Inter Tight", sans-serif; font-size: 11px; fill: var(--ink-3); letter-spacing: 0.04em; }
+
+  .cat-bubble { stroke-width: 1.2; fill: oklch(0.14 0.02 200 / 0.85); }
+  .cat-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+  .cat-count { font-family: "JetBrains Mono", monospace; font-size: 9px; fill: var(--ink-3); letter-spacing: 0.12em; }
+
+  .node-card { cursor: pointer; transition: transform .25s ease; transform-box: fill-box; transform-origin: center; }
+  .node-card:hover { transform: scale(1.07); }
+  .node-card .pill { fill: oklch(0.12 0.02 200 / 0.92); stroke-width: 1.3; }
+  .node-card .num  { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.04em; }
+  .node-card .title { font-family: "Inter Tight", sans-serif; font-weight: 500; font-size: 13.5px; fill: var(--ink-1); }
+  .node-card .title-sub { font-family: "Inter Tight", sans-serif; font-weight: 400; font-size: 12px; fill: var(--ink-2); }
+  .node-card.active .pill { fill: oklch(0.18 0.05 200 / 0.95); }
+  .node-card.active .glow { opacity: 0.7; }
+  .node-card .glow { opacity: 0; filter: blur(10px); transition: opacity .3s ease; }
+  .node-card:hover .glow { opacity: 0.6; }
+
+  /* ───────── Legend ───────── */
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: clamp(20px, 3vw, 36px);
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: oklch(0.12 0.01 200 / 0.5);
+  }
+  .legend .item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all .2s ease;
+  }
+  .legend .item:hover { background: oklch(0.16 0.02 200 / 0.6); border-color: var(--line); }
+  .legend .swatch { width: 10px; height: 10px; border-radius: 999px; box-shadow: 0 0 12px currentColor; flex-shrink: 0; }
+  .legend .name {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--ink-1);
+  }
+  .legend .count {
+    margin-left: auto;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+
+  /* ───────── Details panel ───────── */
+  .details {
+    margin-top: clamp(28px, 4vw, 48px);
+    padding: clamp(22px, 3vw, 36px);
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, oklch(0.13 0.02 200 / 0.85), oklch(0.10 0.02 200 / 0.6));
+    backdrop-filter: blur(20px);
+    transition: all .35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .details::before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--accent);
+    transition: background .25s ease;
+  }
+  .details[data-cat="fondations"]::before { background: var(--c-fondations); }
+  .details[data-cat="supervise"]::before  { background: var(--c-supervise); }
+  .details[data-cat="mlops"]::before      { background: var(--c-mlops); }
+  .details[data-cat="methodo"]::before    { background: var(--c-methodo); }
+  .details[data-cat="vision"]::before     { background: var(--c-vision); }
+  .details[data-cat="genai"]::before      { background: var(--c-genai); }
+
+  .details .head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .details .num-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    letter-spacing: 0.08em;
+  }
+  .details .cat-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .details .duration {
+    margin-left: auto;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+  .details .status {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: oklch(0.42 0.10 145 / 0.18);
+    color: oklch(0.78 0.13 145);
+    letter-spacing: 0.08em;
+  }
+  .details h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(22px, 3.2vw, 32px);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .details .mission {
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 72ch;
+    margin: 0 0 24px;
+  }
+  .details .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .details .block {
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: oklch(0.10 0.01 200 / 0.45);
+  }
+  .details .block h3 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 12px;
+  }
+  .details .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .details .chip {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background: oklch(0.18 0.04 200 / 0.5);
+    border: 1px solid oklch(0.30 0.03 200 / 0.6);
+    color: var(--ink-1);
+  }
+  .details ul {
+    margin: 0; padding-left: 18px;
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .details ul li { margin-bottom: 4px; }
+
+  .details .placeholder {
+    text-align: center;
+    padding: 36px 12px;
+    color: var(--ink-3);
+  }
+  .details .placeholder .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    opacity: 0.6;
+  }
+
+  /* ───────── Footer ───────── */
+  .footer {
+    margin-top: clamp(56px, 8vw, 96px);
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+  .footer a:hover { color: var(--accent); }
+  .footer .links { display: flex; gap: 18px; flex-wrap: wrap; }
+
+  /* ───────── Mobile fallback ───────── */
+  @media (max-width: 720px) {
+    .mindmap-wrap { padding: 4px; }
+    .hub-label-line2, .hub-label-line3 { font-size: 18px; }
+    .node-card .title { font-size: 11px; }
+    .details .duration { margin-left: 0; }
+  }
+
+  /* Animations */
+  @keyframes orbit-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.03); }
+  }
+  .hub-pulse { transform-origin: center; transform-box: fill-box; animation: orbit-pulse 4.5s ease-in-out infinite; }
+  @keyframes line-dash { to { stroke-dashoffset: -32; } }
+  .conn-cat { animation: line-dash 14s linear infinite; }
+</style>
+</head>
+<body>
+  <main class="page">
+    <nav class="topbar">
+      <a class="back" href="./" aria-label="Retour au portfolio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour au portfolio
+      </a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="meta">Carte mentale · v1.0</div>
+        <button id="theme-toggle" aria-label="Basculer le thème clair / sombre">
+          <!-- Soleil — visible en mode sombre -->
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <!-- Lune — visible en mode clair -->
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <span class="eyebrow"><span class="dot"></span>Parcours diplômant · RNCP Niveau 7</span>
+      <h1>14 projets, <em>une seule trajectoire</em> vers l'IA fiable.</h1>
+      <p class="lead">
+        De la première requête API Hugging Face au fine-tuning supervisé d'un LLM clinique — chaque projet construit une pièce de la stack AI Engineer. Cliquez sur un nœud pour ouvrir le détail.
+      </p>
+      <div class="stats">
+        <div class="stat"><b>14</b><span>Projets validés</span></div>
+        <div class="stat"><b>804h</b><span>Formation OC</span></div>
+        <div class="stat"><b>6</b><span>Domaines couverts</span></div>
+        <div class="stat"><b>100%</b><span>Soutenances réussies</span></div>
+      </div>
+    </header>
+
+    <section id="carte" class="mindmap-wrap" aria-label="Carte mentale interactive">
+      <svg class="mindmap-svg" viewBox="0 0 1600 1100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte mentale des 14 projets">
+
+        <!-- Defs : gradients & filters -->
+        <defs>
+          <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="oklch(0.30 0.10 195)" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="oklch(0.10 0.02 200)" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="orbitGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="oklch(0.78 0.12 195)" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="oklch(0.78 0.12 195)" stop-opacity="0"/>
+          </radialGradient>
+
+          <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3"/>
+          </filter>
+
+          <!-- Per-category small glow filter -->
+          <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Decorative orbit rings -->
+        <g class="orbit-rings" opacity="0.35">
+          <circle cx="800" cy="550" r="180" fill="none" stroke="oklch(0.25 0.04 200 / 0.6)" stroke-width="1" stroke-dasharray="2 6"/>
+          <circle cx="800" cy="550" r="295" fill="none" stroke="oklch(0.22 0.03 200 / 0.5)" stroke-width="1" stroke-dasharray="2 8"/>
+          <circle cx="800" cy="550" r="425" fill="none" stroke="oklch(0.20 0.03 200 / 0.4)" stroke-width="1" stroke-dasharray="2 10"/>
+        </g>
+
+        <!-- Hub glow -->
+        <circle cx="800" cy="550" r="200" fill="url(#hubGrad)" class="hub-glow hub-pulse"/>
+
+        <!-- Connections + category bubbles + project nodes (rendered via JS) -->
+        <g id="connections-cat"></g>
+        <g id="connections-projects"></g>
+        <g id="categories"></g>
+        <g id="projects"></g>
+
+        <!-- Central hub -->
+        <g id="hub">
+          <circle cx="800" cy="550" r="118" class="hub-core"/>
+          <circle cx="800" cy="550" r="118" class="hub-ring"/>
+          <circle cx="800" cy="550" r="128" class="hub-ring" opacity="0.35"/>
+          <circle cx="800" cy="550" r="138" class="hub-ring" opacity="0.15"/>
+          <text x="800" y="494" text-anchor="middle" class="hub-label-line1">François</text>
+          <text x="800" y="512" text-anchor="middle" class="hub-label-line1">Hellebuyck</text>
+          <text x="800" y="550" text-anchor="middle" class="hub-label-line2">AI Engineer</text>
+          <text x="800" y="572" text-anchor="middle" class="hub-label-line4">— parcours 2025 → 2026 —</text>
+          <text x="800" y="588" text-anchor="middle" class="hub-label-line4">OpenClassrooms · RNCP 7</text>
+        </g>
+
+      </svg>
+    </section>
+
+    <section class="details" id="details" data-cat="">
+      <div id="details-body">
+        <div class="placeholder">
+          <div class="icon">◐</div>
+          <p>Cliquez sur un projet de la carte pour découvrir mission, stack et compétences validées.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="legend" aria-label="Légende des catégories">
+      <div class="item"><span class="swatch" style="background: var(--c-fondations); color: var(--c-fondations);"></span><span class="name">Fondations IA</span><span class="count">02</span></div>
+      <div class="item"><span class="swatch" style="background: var(--c-supervise); color: var(--c-supervise);"></span><span class="name">Apprentissage supervisé</span><span class="count">02</span></div>
+      <div class="item"><span class="swatch" style="background: var(--c-mlops); color: var(--c-mlops);"></span><span class="name">MLOps & Production</span><span class="count">03</span></div>
+      <div class="item"><span class="swatch" style="background: var(--c-methodo); color: var(--c-methodo);"></span><span class="name">Cadrage & Data Eng</span><span class="count">02</span></div>
+      <div class="item"><span class="swatch" style="background: var(--c-vision); color: var(--c-vision);"></span><span class="name">Vision & RL</span><span class="count">02</span></div>
+      <div class="item"><span class="swatch" style="background: var(--c-genai); color: var(--c-genai);"></span><span class="name">Generative AI</span><span class="count">03</span></div>
+    </section>
+
+    <footer class="footer">
+      <div>© 2026 François Hellebuyck — Carte mentale du parcours AI Engineer</div>
+      <div class="links">
+        <a href="./">Portfolio</a>
+        <a href="https://linkedin.com/in/fhellebuyck" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://huggingface.co/FrancoisFormation" target="_blank" rel="noopener">Hugging Face</a>
+        <a href="mailto:pro.fhellebuyck@pm.me">Contact</a>
+      </div>
+    </footer>
+  </main>
+
+<script>
+/* ─────────────────────────────────────────────────────────
+   Thème clair / sombre
+   ───────────────────────────────────────────────────────── */
+(function () {
+  const html = document.documentElement;
+  const btn  = document.getElementById("theme-toggle");
+  if (localStorage.getItem("pf-theme") === "light") html.classList.add("light");
+  btn.addEventListener("click", () => {
+    html.classList.toggle("light");
+    localStorage.setItem("pf-theme", html.classList.contains("light") ? "light" : "dark");
+  });
+})();
+
+/* ─────────────────────────────────────────────────────────
+   Carte mentale — données + rendu interactif
+   ───────────────────────────────────────────────────────── */
+
+const CX = 800, CY = 550;
+const R_CAT = 235;
+const R_NODE = 470;
+
+const CATEGORIES = {
+  fondations: { label: "Fondations IA",   full: "Fondations IA",          color: "#34D399", angle: 12.85 },
+  supervise:  { label: "Supervisé",       full: "Apprentissage supervisé", color: "#22D3EE", angle: 64.25 },
+  mlops:      { label: "MLOps",           full: "MLOps & Production",      color: "#60A5FA", angle: 128.6 },
+  methodo:    { label: "Cadrage / Data",  full: "Cadrage & Data Eng",      color: "#A78BFA", angle: 192.85 },
+  vision:     { label: "Vision / RL",     full: "Vision & RL",             color: "#F472B6", angle: 244.25 },
+  genai:      { label: "Generative AI",   full: "Generative AI",           color: "#FBBF24", angle: 308.6 }
+};
+
+const PROJECTS = [
+  {
+    num: "P1", angle: 0, cat: "fondations", duration: "40h",
+    title: "Requêtez des services IA",
+    mission: "Premier projet du parcours : prendre en main un modèle pré-entraîné de segmentation d'images vestimentaires depuis Hugging Face, sécuriser les tokens API, optimiser les images et gérer les erreurs.",
+    stack: ["Python", "Jupyter", "Hugging Face", "API REST", "Pillow"],
+    skills: [
+      "Configurer un environnement Python data",
+      "Choisir et configurer un modèle pré-entraîné",
+      "Gérer les tokens API et la sécurisation des secrets",
+      "Optimiser et préparer des images pour requêtes API"
+    ]
+  },
+  {
+    num: "P2", angle: 25.71, cat: "fondations", duration: "40h",
+    title: "Anticipez les besoins en consommations de bâtiments",
+    mission: "Prédire la consommation énergétique de bâtiments municipaux (dataset Seattle). Analyse exploratoire complète, feature engineering, sélection et évaluation de plusieurs modèles de régression supervisée.",
+    stack: ["scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+    skills: [
+      "Analyse statistique descriptive et visualisation",
+      "Automatiser le nettoyage de données en Python",
+      "Choisir un algorithme adapté aux objectifs métier",
+      "Normaliser les variables sur une échelle commune",
+      "Définir et exécuter une procédure d'entraînement"
+    ]
+  },
+  {
+    num: "P3", angle: 51.43, cat: "supervise", duration: "50h",
+    title: "Classifiez automatiquement des informations",
+    mission: "Identifier les causes d'attrition au sein d'une ESN par classification supervisée. Préparation des données RH, gestion du déséquilibre des classes, métriques d'évaluation avancées.",
+    stack: ["scikit-learn", "Pandas", "Imbalanced-learn", "Matplotlib"],
+    skills: [
+      "Entraîner un modèle de classification supervisée",
+      "Évaluer un modèle (rappel, précision, matrice de confusion)",
+      "Composer avec un déséquilibre des classes",
+      "Préparer et transformer des données pour le modèle"
+    ]
+  },
+  {
+    num: "P4", angle: 77.14, cat: "supervise", duration: "50h",
+    title: "Classifiez automatiquement (partie 2 + SQL)",
+    mission: "Prolongement du projet 3 sur le contexte ESN : initiation à la gestion de bases de données et au langage SQL pour exploiter et croiser des données métier dans un pipeline de classification.",
+    stack: ["SQL", "scikit-learn", "Pandas", "SQLite"],
+    skills: [
+      "Requêter une base de données avec SQL",
+      "Croiser des sources hétérogènes pour le modèle",
+      "Itérer sur le pipeline de classification",
+      "Affiner les choix méthodologiques"
+    ]
+  },
+  {
+    num: "P5", angle: 102.86, cat: "mlops", duration: "40h",
+    title: "Déployez un modèle de Machine Learning",
+    mission: "Mettre un modèle ML en production : développement d'une API FastAPI, tests unitaires avec Pytest, versioning Git/GitHub, conteneurisation Docker et pipeline CI/CD vers Hugging Face Spaces.",
+    stack: ["FastAPI", "Pytest", "Docker", "Git", "GitHub Actions", "HF Spaces"],
+    skills: [
+      "Développer une API pour servir un modèle",
+      "Mettre en place tests unitaires et CI/CD",
+      "Conteneuriser un service ML",
+      "Versionner code et modèles via Git/GitHub",
+      "Déployer un modèle sur une plateforme cible"
+    ]
+  },
+  {
+    num: "P6", angle: 128.57, cat: "mlops", duration: "50h",
+    title: "Initiez-vous au MLOps — partie 1/2",
+    mission: "Modèle de scoring crédit avec gestion rigoureuse du cycle de vie : tracking des expériences MLflow, optimisation des hyperparamètres, ajustement des seuils de décision, justifications métier.",
+    stack: ["MLflow", "scikit-learn", "Optuna", "Pandas"],
+    skills: [
+      "Gérer l'overfitting et l'underfitting",
+      "Identifier et tuner les hyperparamètres",
+      "Tracer expérimentations avec MLflow",
+      "Surveiller la qualité des features",
+      "Justifier ses choix en lien avec le métier"
+    ]
+  },
+  {
+    num: "P8", angle: 154.29, cat: "mlops", duration: "45h",
+    title: "Confirmez vos compétences MLOps — partie 2/2",
+    mission: "Suite du projet 6 : déploiement du modèle de scoring via API, mise en place du monitoring continu en production, automatisation du pipeline MLOps et interface de démonstration.",
+    stack: ["FastAPI", "Streamlit", "Gradio", "Evidently", "Docker", "MLflow"],
+    skills: [
+      "Prendre ses premiers pas en ML Engineering",
+      "Concevoir un système de suivi de cycle de vie",
+      "Mettre en place monitoring et alerting",
+      "Automatiser un pipeline MLOps",
+      "Exposer un modèle via une interface web"
+    ]
+  },
+  {
+    num: "P9", angle: 180, cat: "methodo", duration: "45h",
+    title: "Réalisez le cadrage d'un projet IA",
+    mission: "Cadrage complet d'un projet IA en 3 parties : transformation des besoins métier en solution technique, prototype de faisabilité, identification des opportunités et risques, défense devant des décideurs.",
+    stack: ["Méthodologie", "Gouvernance data", "Prototypage", "Pilotage"],
+    skills: [
+      "Conduire les échanges entre parties prenantes",
+      "Définir modalités, planning et suivi du projet data",
+      "Prototyper pour confirmer la faisabilité technique",
+      "Identifier et évaluer les risques de la solution",
+      "Présenter et défendre les choix d'architecture"
+    ]
+  },
+  {
+    num: "P12", angle: 205.71, cat: "methodo", duration: "80h",
+    title: "Extrayez des données multimodales de sites web",
+    mission: "Industrialisation de l'ingestion : pipeline ETL automatisé pour collecter texte + images depuis des sources hétérogènes (APIs, datasets), à destination d'un détecteur de fake news. Orchestration via Apache Airflow.",
+    stack: ["Apache Airflow", "Python", "BeautifulSoup", "Requests", "PostgreSQL"],
+    skills: [
+      "Extraire des données multi-sources (texte + images)",
+      "Transformer données brutes en format exploitable",
+      "Orchestrer un pipeline ETL avec Airflow",
+      "Garantir reproductibilité, schéma et planification",
+      "Définir des indicateurs de performance pipeline"
+    ]
+  },
+  {
+    num: "P10", angle: 231.43, cat: "vision", duration: "40h",
+    title: "Labellisez et appliquez des approches semi-supervisées en traitement d'images",
+    mission: "Analyser des images médicales avec un compromis entre supervision totale et autonomie : extraction de features par modèles pré-entraînés, clustering, application de méthodes semi-supervisées pour exploiter des données non labellisées.",
+    stack: ["TensorFlow / Keras", "scikit-learn", "OpenCV", "UMAP", "Hugging Face"],
+    skills: [
+      "Prétraiter et extraire des features visuelles",
+      "Appliquer du clustering sur des images",
+      "Mettre en œuvre des approches semi-supervisées",
+      "Identifier ou créer un modèle adapté au métier"
+    ]
+  },
+  {
+    num: "P11", angle: 257.14, cat: "vision", duration: "80h",
+    title: "Entraînez votre agent RL",
+    mission: "Piloter le module d'atterrissage lunaire « Eagle-1 » par apprentissage par renforcement. Progression Q-table → DQN, agent apprenant par interaction avec un environnement de simulation pour maximiser une récompense cumulative.",
+    stack: ["Stable Baselines 3", "Gymnasium", "PyTorch", "TensorBoard"],
+    skills: [
+      "Construire un agent apprenant par interaction",
+      "Maîtriser policy, value function et reward",
+      "Passer d'une Q-table à un DQN neuronal",
+      "Évaluer la convergence d'un agent RL",
+      "Visualiser les apprentissages dans TensorBoard"
+    ]
+  },
+  {
+    num: "P7", angle: 282.86, cat: "genai", duration: "60h",
+    title: "Concevez et déployez un système RAG",
+    mission: "Assistant conversationnel de recommandation d'événements culturels : architecture RAG complète avec LangChain orchestrant Mistral et une base vectorielle FAISS. Pipeline d'automatisation et tests continus de la qualité.",
+    stack: ["LangChain", "Mistral", "FAISS", "Hugging Face", "FastAPI"],
+    skills: [
+      "Concevoir un système RAG de bout en bout",
+      "Intégrer un LLM avec une base vectorielle",
+      "Exposer les résultats via une API",
+      "Mettre en place tests continus sur le modèle",
+      "Automatiser les flux de données NLP"
+    ]
+  },
+  {
+    num: "P13", angle: 308.57, cat: "genai", duration: "80h",
+    title: "Mettez en place un Agent IA",
+    mission: "Agent IA conversationnel pour l'apprentissage des échecs : orchestration LangGraph pour les workflows de décision, RAG sur Milvus, intégration d'APIs externes via le Model Context Protocol (MCP).",
+    stack: ["LangGraph", "LangChain", "Milvus", "MCP", "FastAPI", "Python"],
+    skills: [
+      "Construire un graphe de décision LangGraph",
+      "Orchestrer des outils externes via MCP",
+      "Intégrer un RAG dans un agent autonome",
+      "Concevoir des systèmes IA modulaires et évolutifs",
+      "Étudier un modèle adapté aux besoins métier"
+    ]
+  },
+  {
+    num: "P14", angle: 334.29, cat: "genai", duration: "80h",
+    title: "Finetunez votre propre LLM",
+    mission: "Projet de fin de parcours — POC d'un agent IA de triage médical pour un centre hospitalier : fine-tuning supervisé (SFT) d'un LLM avec LoRA, alignement par Direct Preference Optimization (DPO), livraison d'une API + rapport technique.",
+    stack: ["Hugging Face Transformers", "PEFT / LoRA", "TRL (SFT, DPO)", "PyTorch", "FastAPI"],
+    skills: [
+      "Spécialiser un LLM via Supervised Fine-Tuning (SFT)",
+      "Appliquer LoRA pour entraînement économe",
+      "Aligner un modèle par Direct Preference Optimization",
+      "Évaluer l'infrastructure d'inférence",
+      "Automatiser le déploiement avec versioning du modèle"
+    ]
+  }
+];
+
+/* ───────── Helper géométrique : polaire avec 0° = haut, sens horaire ───────── */
+function polar(angle, r) {
+  const rad = (angle - 90) * Math.PI / 180;
+  return { x: CX + r * Math.cos(rad), y: CY + r * Math.sin(rad) };
+}
+
+/* ───────── Rendu SVG ───────── */
+const NS = "http://www.w3.org/2000/svg";
+
+const $connCat   = document.getElementById("connections-cat");
+const $connProj  = document.getElementById("connections-projects");
+const $cats      = document.getElementById("categories");
+const $projects  = document.getElementById("projects");
+
+// Lignes hub → catégorie (pointillés animés)
+Object.entries(CATEGORIES).forEach(([key, cat]) => {
+  const p = polar(cat.angle, R_CAT - 18); // s'arrête au bord intérieur de la pilule
+  const line = document.createElementNS(NS, "path");
+  const hubEdge = polar(cat.angle, 142); // démarre juste après l'anneau du hub
+  line.setAttribute("d", `M ${hubEdge.x} ${hubEdge.y} L ${p.x} ${p.y}`);
+  line.setAttribute("class", "conn-cat");
+  line.setAttribute("data-cat", key);
+  line.style.stroke = cat.color + "AA";
+  $connCat.appendChild(line);
+});
+
+// Lignes catégorie → projets
+PROJECTS.forEach(proj => {
+  const cat = CATEGORIES[proj.cat];
+  const start = polar(cat.angle, R_CAT + 28); // sort à l'extérieur de la pastille
+  const end   = polar(proj.angle, R_NODE - 32); // s'arrête au bord du chip
+  // Courbe douce — passe par un point intermédiaire entre les deux rayons
+  const midAngle = (cat.angle + proj.angle) / 2;
+  const mid = polar(midAngle, (R_CAT + R_NODE) / 2);
+  const path = document.createElementNS(NS, "path");
+  path.setAttribute("d", `M ${start.x} ${start.y} Q ${mid.x} ${mid.y} ${end.x} ${end.y}`);
+  path.setAttribute("class", "conn");
+  path.setAttribute("data-cat", proj.cat);
+  path.style.stroke = cat.color + "55";
+  $connProj.appendChild(path);
+});
+
+// Pilules catégories (horizontales, toujours lisibles)
+Object.entries(CATEGORIES).forEach(([key, cat]) => {
+  const p = polar(cat.angle, R_CAT);
+  const count = PROJECTS.filter(pr => pr.cat === key).length;
+  const g = document.createElementNS(NS, "g");
+  g.setAttribute("class", "cat-group");
+  g.setAttribute("data-cat", key);
+  g.setAttribute("transform", `translate(${p.x},${p.y})`);
+
+  // Halo doux
+  const glow = document.createElementNS(NS, "rect");
+  glow.setAttribute("x", -84);
+  glow.setAttribute("y", -22);
+  glow.setAttribute("width", 168);
+  glow.setAttribute("height", 44);
+  glow.setAttribute("rx", 22);
+  glow.setAttribute("fill", cat.color);
+  glow.setAttribute("opacity", 0.18);
+  glow.setAttribute("filter", "url(#softBlur)");
+  g.appendChild(glow);
+
+  // Pilule horizontale
+  const rect = document.createElementNS(NS, "rect");
+  rect.setAttribute("x", -80);
+  rect.setAttribute("y", -18);
+  rect.setAttribute("width", 160);
+  rect.setAttribute("height", 36);
+  rect.setAttribute("rx", 18);
+  rect.setAttribute("class", "cat-bubble");
+  rect.setAttribute("stroke", cat.color);
+  g.appendChild(rect);
+
+  // Pastille de compte à gauche dans la pilule
+  const numBg = document.createElementNS(NS, "circle");
+  numBg.setAttribute("cx", -60);
+  numBg.setAttribute("cy", 0);
+  numBg.setAttribute("r", 12);
+  numBg.setAttribute("fill", cat.color);
+  numBg.setAttribute("opacity", 0.22);
+  g.appendChild(numBg);
+
+  const numText = document.createElementNS(NS, "text");
+  numText.setAttribute("x", -60);
+  numText.setAttribute("y", 3);
+  numText.setAttribute("text-anchor", "middle");
+  numText.setAttribute("class", "cat-count");
+  numText.setAttribute("fill", cat.color);
+  numText.textContent = String(count).padStart(2, "0");
+  g.appendChild(numText);
+
+  // Libellé de la catégorie à droite
+  const lbl = document.createElementNS(NS, "text");
+  lbl.setAttribute("x", -42);
+  lbl.setAttribute("y", 4);
+  lbl.setAttribute("text-anchor", "start");
+  lbl.setAttribute("class", "cat-label");
+  lbl.setAttribute("fill", cat.color);
+  lbl.textContent = cat.label.toUpperCase();
+  g.appendChild(lbl);
+
+  $cats.appendChild(g);
+});
+
+// Cartes projet — pill à taille dynamique (mesure via getComputedTextLength)
+const NUM_CX = -52, NUM_R = 15, TEXT_X = NUM_CX + NUM_R + 8; // -29
+const PILL_H = 48, PILL_RX = 24;
+const PILL_PAD_L = 10, PILL_PAD_R = 14;
+const pillLeft = NUM_CX - NUM_R - PILL_PAD_L; // -77
+const MAX_TEXT_W = 155; // SVG units — seuil de troncature
+
+PROJECTS.forEach(proj => {
+  const p = polar(proj.angle, R_NODE);
+  const cat = CATEGORIES[proj.cat];
+
+  // Wrapper externe : translate uniquement
+  const wrap = document.createElementNS(NS, "g");
+  wrap.setAttribute("transform", `translate(${p.x},${p.y})`);
+
+  // Groupe interne : animation + sémantique
+  const g = document.createElementNS(NS, "g");
+  g.setAttribute("class", "node-card");
+  g.setAttribute("data-num", proj.num);
+  g.setAttribute("data-cat", proj.cat);
+  g.setAttribute("tabindex", "0");
+  g.setAttribute("role", "button");
+  g.setAttribute("aria-label", `${proj.num} — ${proj.title}`);
+
+  // Insérer dans le DOM d'abord pour que getComputedTextLength fonctionne
+  wrap.appendChild(g);
+  $projects.appendChild(wrap);
+
+  // ── Textes (créés en premier pour mesure) ──
+  const title = document.createElementNS(NS, "text");
+  title.setAttribute("x", TEXT_X);
+  title.setAttribute("y", -2);
+  title.setAttribute("class", "title");
+  title.textContent = proj.title;
+  g.appendChild(title);
+
+  // Tronquer si nécessaire
+  while (title.getComputedTextLength() > MAX_TEXT_W && title.textContent.length > 4) {
+    title.textContent = title.textContent.slice(0, -2).trimEnd() + "…";
+  }
+
+  const sub = document.createElementNS(NS, "text");
+  sub.setAttribute("x", TEXT_X);
+  sub.setAttribute("y", 13);
+  sub.setAttribute("class", "title-sub");
+  sub.textContent = proj.stack[0];
+  g.appendChild(sub);
+
+  // ── Calcul de la largeur de la pill selon le texte réel ──
+  const textW = Math.max(title.getComputedTextLength(), sub.getComputedTextLength());
+  const pillW = TEXT_X + textW + PILL_PAD_R - pillLeft;
+
+  // ── Éléments de fond (insérés avant les textes) ──
+  const glow = document.createElementNS(NS, "rect");
+  glow.setAttribute("x", pillLeft - 4);
+  glow.setAttribute("y", -(PILL_H / 2 + 4));
+  glow.setAttribute("width", pillW + 8);
+  glow.setAttribute("height", PILL_H + 8);
+  glow.setAttribute("rx", PILL_RX + 4);
+  glow.setAttribute("fill", cat.color);
+  glow.setAttribute("class", "glow");
+
+  const pill = document.createElementNS(NS, "rect");
+  pill.setAttribute("x", pillLeft);
+  pill.setAttribute("y", -PILL_H / 2);
+  pill.setAttribute("width", pillW);
+  pill.setAttribute("height", PILL_H);
+  pill.setAttribute("rx", PILL_RX);
+  pill.setAttribute("class", "pill");
+  pill.setAttribute("stroke", cat.color + "AA");
+
+  const numBg = document.createElementNS(NS, "circle");
+  numBg.setAttribute("cx", NUM_CX);
+  numBg.setAttribute("cy", 0);
+  numBg.setAttribute("r", NUM_R);
+  numBg.setAttribute("fill", cat.color);
+  numBg.setAttribute("opacity", 0.18);
+
+  const numText = document.createElementNS(NS, "text");
+  numText.setAttribute("x", NUM_CX);
+  numText.setAttribute("y", 4);
+  numText.setAttribute("text-anchor", "middle");
+  numText.setAttribute("class", "num");
+  numText.setAttribute("fill", cat.color);
+  numText.textContent = proj.num;
+
+  // Ordre SVG : glow → pill → numBg → numText → title → sub
+  g.insertBefore(numText, title);
+  g.insertBefore(numBg, numText);
+  g.insertBefore(pill, numBg);
+  g.insertBefore(glow, pill);
+
+  g.addEventListener("click", () => openDetails(proj.num));
+  g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetails(proj.num); } });
+});
+
+function truncate(str, max) {
+  if (str.length <= max) return str;
+  return str.slice(0, max - 1).trim() + "…";
+}
+
+/* ───────── Détail au clic ───────── */
+const $details = document.getElementById("details");
+const $body    = document.getElementById("details-body");
+
+function openDetails(num, scroll = true) {
+  const proj = PROJECTS.find(p => p.num === num);
+  if (!proj) return;
+  const cat = CATEGORIES[proj.cat];
+
+  // Mise à jour visuelle des cartes
+  document.querySelectorAll(".node-card").forEach(n => n.classList.remove("active"));
+  document.querySelector(`.node-card[data-num="${num}"]`)?.classList.add("active");
+
+  $details.setAttribute("data-cat", proj.cat);
+
+  $body.innerHTML = `
+    <div class="head">
+      <span class="num-tag" style="color: ${cat.color};">${proj.num}</span>
+      <span class="cat-tag">${cat.full}</span>
+      <span class="status">VALIDÉ</span>
+      <span class="duration">⧗ ${proj.duration}</span>
+    </div>
+    <h2>${escapeHtml(proj.title)}</h2>
+    <p class="mission">${escapeHtml(proj.mission)}</p>
+    <div class="grid">
+      <div class="block">
+        <h3>Stack technique</h3>
+        <div class="chips">
+          ${proj.stack.map(s => `<span class="chip">${escapeHtml(s)}</span>`).join("")}
+        </div>
+      </div>
+      <div class="block">
+        <h3>Compétences validées</h3>
+        <ul>
+          ${proj.skills.map(s => `<li>${escapeHtml(s)}</li>`).join("")}
+        </ul>
+      </div>
+    </div>
+  `;
+
+  // Scroll doux (désactivé à l'init pour rester en haut de page)
+  if (scroll) $details.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/* Sélection initiale : P14 — sans scroll pour rester en haut de page */
+openDetails("P14", false);
+</script>
+</body>
+</html>
