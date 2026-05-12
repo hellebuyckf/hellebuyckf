@@ -92,20 +92,20 @@ const V2 = () => {
 
   const projects = [
     {
-      tag: 'Clinical · Triage',
-      title: 'Triage Urgence',
-      sub: 'Système d\'aide à la décision pour le tri ESI',
-      desc: 'Pipeline LLM enrichi par RAG sur référentiels cliniques. Scoring multi-critères, journal de décision auditable, interface conçue avec la contrainte temps des urgentistes.',
-      stack: ['LangChain', 'RAG', 'ChromaDB', 'FastAPI', 'PEFT'],
-      metric: { v: '< 800ms', l: 'latence cible' },
-    },
-    {
       tag: 'Performance · Vision',
       title: 'Aria',
       sub: 'Analyse posturale du coureur',
       desc: 'Vision par ordinateur pour la détection des compensations biomécaniques en course. Cadence, asymétrie, retour structuré pour coachs et kinésithérapeutes du sport.',
       stack: ['Python', 'Vision', 'MLflow', 'Docker'],
       metric: { v: '60 fps', l: 'temps réel' },
+    },
+    {
+      tag: 'Clinical · Triage',
+      title: 'Triage Urgence',
+      sub: 'Système d\'aide à la décision pour le tri ESI',
+      desc: 'Pipeline LLM enrichi par RAG sur référentiels cliniques. Scoring multi-critères, journal de décision auditable, interface conçue avec la contrainte temps des urgentistes.',
+      stack: ['LangChain', 'RAG', 'ChromaDB', 'FastAPI', 'PEFT'],
+      metric: { v: '< 800ms', l: 'latence cible' },
     },
   ];
 
