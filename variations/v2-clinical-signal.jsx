@@ -200,7 +200,7 @@ const V2 = () => {
               {F.tagline}
             </div>
             <div style={{ display: 'flex', gap: 14, marginTop: 40 }}>
-              <a style={{
+              <a href="#projects" style={{
                 background: C.accent, color: C.bg, padding: '14px 22px',
                 fontSize: 14, fontWeight: 600, textDecoration: 'none', borderRadius: vibe.radius,
                 display: 'inline-flex', alignItems: 'center', gap: 10,
