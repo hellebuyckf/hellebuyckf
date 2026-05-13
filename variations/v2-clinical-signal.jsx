@@ -343,7 +343,8 @@ const V2 = () => {
                 </div>
               </div>
               {p.github && (
-                <div style={{ marginTop: 20, borderTop: `1px solid ${C.border}`, paddingTop: 16 }}>
+                <div style={{ marginTop: 20, borderTop: `1px solid ${C.border}`, paddingTop: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <span style={{ fontFamily: vibe.monoFont, fontSize: 13, color: C.dim, letterSpacing: '0.04em' }}>Découvrir le projet :</span>
                   <a href={p.github} target="_blank" rel="noopener" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     color: C.dim, textDecoration: 'none', fontSize: 14,
