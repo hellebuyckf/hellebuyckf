@@ -229,14 +229,16 @@ const V2 = () => {
                 </svg>
               </a>
               <a href="https://huggingface.co/FrancoisFormation" target="_blank" rel="noopener" aria-label="Hugging Face" title="huggingface.co/FrancoisFormation" style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                width: 40, height: 40, borderRadius: 999,
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                height: 40, borderRadius: 999, padding: '0 14px',
                 border: `1px solid ${C.border}`, background: C.panel,
-                textDecoration: 'none', fontSize: 28, lineHeight: 1, transition: 'border-color 200ms',
+                color: C.dim, textDecoration: 'none', transition: 'color 200ms, border-color 200ms',
+                fontFamily: vibe.monoFont, fontSize: 15,
               }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = C.accent; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; }}
+              onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.borderColor = C.accent; }}
+              onMouseLeave={e => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.border; }}
               >
+                <span>Mon HF</span>
                 <span aria-hidden="true">🤗</span>
               </a>
             </div>
