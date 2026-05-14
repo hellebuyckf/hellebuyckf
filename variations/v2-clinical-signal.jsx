@@ -218,7 +218,7 @@ const V2 = () => {
                 height: 40, borderRadius: 999, padding: '0 14px',
                 border: `1px solid ${C.border}`, background: C.panel,
                 color: C.dim, textDecoration: 'none', transition: 'color 200ms, border-color 200ms',
-                fontFamily: vibe.monoFont, fontSize: 15,
+                fontFamily: vibe.monoFont, fontSize: 19,
               }}
               onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.borderColor = C.accent; }}
               onMouseLeave={e => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.border; }}
@@ -233,7 +233,7 @@ const V2 = () => {
                 height: 40, borderRadius: 999, padding: '0 14px',
                 border: `1px solid ${C.border}`, background: C.panel,
                 color: C.dim, textDecoration: 'none', transition: 'color 200ms, border-color 200ms',
-                fontFamily: vibe.monoFont, fontSize: 15,
+                fontFamily: vibe.monoFont, fontSize: 19,
               }}
               onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.borderColor = C.accent; }}
               onMouseLeave={e => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.border; }}
