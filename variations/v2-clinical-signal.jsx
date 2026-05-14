@@ -107,6 +107,7 @@ const V2 = () => {
       desc: 'Pipeline LLM enrichi par RAG sur référentiels cliniques. Scoring multi-critères, journal de décision auditable, interface conçue avec la contrainte temps des urgentistes.',
       stack: ['LangChain', 'RAG', 'ChromaDB', 'FastAPI', 'PEFT'],
       metric: { v: '< 800ms', l: 'latence cible' },
+      migration: true,
     },
   ];
 
@@ -342,6 +343,11 @@ const V2 = () => {
                   <div style={{ fontSize: 14, color: C.dim, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{p.metric.l}</div>
                 </div>
               </div>
+              {p.migration && (
+                <div style={{ marginTop: 20, borderTop: `1px solid ${C.border}`, paddingTop: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <span style={{ fontFamily: vibe.monoFont, fontSize: 13, color: C.dim, letterSpacing: '0.04em' }}>Projet en cours de migration vers le portfolio</span>
+                </div>
+              )}
               {p.github && (
                 <div style={{ marginTop: 20, borderTop: `1px solid ${C.border}`, paddingTop: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
                   <span style={{ fontFamily: vibe.monoFont, fontSize: 13, color: C.dim, letterSpacing: '0.04em' }}>Découvrir le projet :</span>
