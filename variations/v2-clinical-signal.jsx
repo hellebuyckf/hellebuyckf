@@ -241,6 +241,21 @@ const V2 = () => {
                 <span>Mon HF</span>
                 <span aria-hidden="true">🤗</span>
               </a>
+              <a href="CV_FrancoisHellebuyck_AIEngineer_v6_aere.pdf" target="_blank" rel="noopener" aria-label="CV" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                height: 40, borderRadius: 999, padding: '0 14px',
+                border: `1px solid ${C.border}`, background: C.panel,
+                color: C.dim, textDecoration: 'none', transition: 'color 200ms, border-color 200ms',
+                fontFamily: vibe.monoFont, fontSize: 19,
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.borderColor = C.accent; }}
+              onMouseLeave={e => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.border; }}
+              >
+                <span>Mon CV</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </a>
             </div>
           </div>
 
