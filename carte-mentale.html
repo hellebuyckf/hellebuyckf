@@ -5,9 +5,10 @@
 <title>Carte mentale du parcours — AI Engineer · François Hellebuyck</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Carte mentale interactive des 14 projets du parcours AI Engineer (RNCP Niveau 7, OpenClassrooms) — François Hellebuyck." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0F12'/><circle cx='16' cy='16' r='4' fill='%2367E8D0'/><line x1='16' y1='16' x2='16' y2='5' stroke='%2367E8D0' stroke-width='1.5' stroke-opacity='.7'/><line x1='16' y1='16' x2='25.5' y2='21.5' stroke='%2367E8D0' stroke-width='1.5' stroke-opacity='.7'/><line x1='16' y1='16' x2='6.5' y2='21.5' stroke='%2367E8D0' stroke-width='1.5' stroke-opacity='.7'/><circle cx='16' cy='4' r='2.5' fill='none' stroke='%2367E8D0' stroke-width='1.2'/><circle cx='26.5' cy='22' r='2.5' fill='none' stroke='%2367E8D0' stroke-width='1.2'/><circle cx='5.5' cy='22' r='2.5' fill='none' stroke='%2367E8D0' stroke-width='1.2'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-0: #07090B;
@@ -199,17 +200,17 @@
     box-shadow: 0 0 12px var(--accent);
   }
   .hero h1 {
-    font-family: "Fraunces", serif;
-    font-weight: 500;
+    font-family: "Inter Tight", system-ui, sans-serif;
+    font-weight: 700;
     font-size: clamp(34px, 6.4vw, 72px);
     line-height: 1.04;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     margin: 18px auto 14px;
     max-width: 16ch;
   }
   .hero h1 em {
-    font-style: italic;
-    font-weight: 400;
+    font-style: normal;
+    font-weight: 700;
     color: var(--accent);
   }
   .hero p.lead {
@@ -230,7 +231,7 @@
   .hero .stat { text-align: center; }
   .hero .stat b {
     display: block;
-    font-family: "Fraunces", serif;
+    font-family: "Inter Tight", system-ui, sans-serif;
     font-size: clamp(26px, 3vw, 34px);
     font-weight: 500;
     color: var(--ink-1);
@@ -276,21 +277,21 @@
   .hub-glow { filter: blur(28px); opacity: 0.55; }
   .hub-ring { fill: none; stroke: oklch(0.62 0.13 195 / 0.6); stroke-width: 1; }
   .hub-core { fill: var(--bg-1); stroke: oklch(0.78 0.12 195 / 0.7); stroke-width: 1.4; }
-  .hub-label-line1 { font-family: "JetBrains Mono", monospace; font-size: 13px; letter-spacing: 0.16em; fill: var(--accent); text-transform: uppercase; }
-  .hub-label-line2 { font-family: "Fraunces", serif; font-style: italic; font-weight: 500; font-size: 22px; fill: var(--ink-1); }
-  .hub-label-line3 { font-family: "Fraunces", serif; font-weight: 500; font-size: 22px; fill: var(--ink-1); }
-  .hub-label-line4 { font-family: "Inter Tight", sans-serif; font-size: 11px; fill: var(--ink-3); letter-spacing: 0.04em; }
+  .hub-label-line1 { font-family: "JetBrains Mono", monospace; font-size: 17px; letter-spacing: 0.16em; fill: var(--accent); text-transform: uppercase; }
+  .hub-label-line2 { font-family: "Inter Tight", system-ui, sans-serif; font-style: normal; font-weight: 600; font-size: 26px; fill: var(--ink-1); letter-spacing: -0.03em; }
+  .hub-label-line3 { font-family: "Inter Tight", system-ui, sans-serif; font-weight: 600; font-size: 26px; fill: var(--ink-1); letter-spacing: -0.03em; }
+  .hub-label-line4 { font-family: "Inter Tight", sans-serif; font-size: 15px; fill: var(--ink-3); letter-spacing: 0.04em; }
 
   .cat-bubble { stroke-width: 1.2; fill: oklch(0.14 0.02 200 / 0.85); }
-  .cat-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
-  .cat-count { font-family: "JetBrains Mono", monospace; font-size: 9px; fill: var(--ink-3); letter-spacing: 0.12em; }
+  .cat-label { font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+  .cat-count { font-family: "JetBrains Mono", monospace; font-size: 13px; fill: var(--ink-3); letter-spacing: 0.12em; }
 
   .node-card { cursor: pointer; transition: transform .25s ease; transform-box: fill-box; transform-origin: center; }
   .node-card:hover { transform: scale(1.07); }
   .node-card .pill { fill: oklch(0.12 0.02 200 / 0.92); stroke-width: 1.3; }
-  .node-card .num  { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.04em; }
-  .node-card .title { font-family: "Inter Tight", sans-serif; font-weight: 500; font-size: 13.5px; fill: var(--ink-1); }
-  .node-card .title-sub { font-family: "Inter Tight", sans-serif; font-weight: 400; font-size: 12px; fill: var(--ink-2); }
+  .node-card .num  { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 17px; letter-spacing: 0.04em; }
+  .node-card .title { font-family: "Inter Tight", sans-serif; font-weight: 500; font-size: 17.5px; fill: var(--ink-1); }
+  .node-card .title-sub { font-family: "Inter Tight", sans-serif; font-weight: 400; font-size: 16px; fill: var(--ink-2); }
   .node-card.active .pill { fill: oklch(0.18 0.05 200 / 0.95); }
   .node-card.active .glow { opacity: 0.7; }
   .node-card .glow { opacity: 0; filter: blur(10px); transition: opacity .3s ease; }
@@ -381,6 +382,21 @@
     font-size: 11px;
     color: var(--ink-3);
   }
+  .details .proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid oklch(0.62 0.13 195 / 0.4);
+    padding: 4px 10px;
+    border-radius: 999px;
+    transition: all .2s ease;
+    white-space: nowrap;
+  }
+  .details .proj-link:hover { border-color: var(--accent); background: oklch(0.30 0.07 195 / 0.15); }
   .details .status {
     font-family: "JetBrains Mono", monospace;
     font-size: 10px;
@@ -391,11 +407,11 @@
     letter-spacing: 0.08em;
   }
   .details h2 {
-    font-family: "Fraunces", serif;
-    font-weight: 500;
+    font-family: "Inter Tight", system-ui, sans-serif;
+    font-weight: 700;
     font-size: clamp(22px, 3.2vw, 32px);
     margin: 0 0 8px;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
     line-height: 1.2;
   }
   .details .mission {
@@ -469,11 +485,46 @@
   .footer a:hover { color: var(--accent); }
   .footer .links { display: flex; gap: 18px; flex-wrap: wrap; }
 
+  /* ───────── Feuilles dépliables ───────── */
+  .cat-group { cursor: pointer; }
+  .cat-group:hover .cat-bubble { stroke-opacity: 1; }
+
+  .proj-wrap {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .proj-wrap.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .conn.hidden  { opacity: 0 !important; transition: opacity 0.2s ease; }
+  .conn.visible { opacity: 1; transition: opacity 0.35s ease 0.1s; }
+
+  /* Indicateur +/− sur la catégorie */
+  .cat-toggle {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* Hint initial */
+  .hint {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+    fill: var(--ink-3);
+    text-anchor: middle;
+    letter-spacing: 0.08em;
+    animation: hint-fade 2.5s ease 1.8s forwards;
+    opacity: 1;
+  }
+  @keyframes hint-fade { to { opacity: 0; } }
+
   /* ───────── Mobile fallback ───────── */
   @media (max-width: 720px) {
     .mindmap-wrap { padding: 4px; }
-    .hub-label-line2, .hub-label-line3 { font-size: 18px; }
-    .node-card .title { font-size: 11px; }
+    .hub-label-line2, .hub-label-line3 { font-size: 22px; }
+    .node-card .title { font-size: 15px; }
     .details .duration { margin-left: 0; }
   }
 
@@ -527,7 +578,7 @@
     </header>
 
     <section id="carte" class="mindmap-wrap" aria-label="Carte mentale interactive">
-      <svg class="mindmap-svg" viewBox="0 0 1600 1100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte mentale des 14 projets">
+      <svg class="mindmap-svg" viewBox="0 0 1700 1220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte mentale des 14 projets">
 
         <!-- Defs : gradients & filters -->
         <defs>
@@ -556,13 +607,13 @@
 
         <!-- Decorative orbit rings -->
         <g class="orbit-rings" opacity="0.35">
-          <circle cx="800" cy="550" r="180" fill="none" stroke="oklch(0.25 0.04 200 / 0.6)" stroke-width="1" stroke-dasharray="2 6"/>
-          <circle cx="800" cy="550" r="295" fill="none" stroke="oklch(0.22 0.03 200 / 0.5)" stroke-width="1" stroke-dasharray="2 8"/>
-          <circle cx="800" cy="550" r="425" fill="none" stroke="oklch(0.20 0.03 200 / 0.4)" stroke-width="1" stroke-dasharray="2 10"/>
+          <circle cx="850" cy="610" r="190" fill="none" stroke="oklch(0.25 0.04 200 / 0.6)" stroke-width="1" stroke-dasharray="2 6"/>
+          <circle cx="850" cy="610" r="310" fill="none" stroke="oklch(0.22 0.03 200 / 0.5)" stroke-width="1" stroke-dasharray="2 8"/>
+          <circle cx="850" cy="610" r="450" fill="none" stroke="oklch(0.20 0.03 200 / 0.4)" stroke-width="1" stroke-dasharray="2 10"/>
         </g>
 
         <!-- Hub glow -->
-        <circle cx="800" cy="550" r="200" fill="url(#hubGrad)" class="hub-glow hub-pulse"/>
+        <circle cx="850" cy="610" r="210" fill="url(#hubGrad)" class="hub-glow hub-pulse"/>
 
         <!-- Connections + category bubbles + project nodes (rendered via JS) -->
         <g id="connections-cat"></g>
@@ -572,15 +623,15 @@
 
         <!-- Central hub -->
         <g id="hub">
-          <circle cx="800" cy="550" r="118" class="hub-core"/>
-          <circle cx="800" cy="550" r="118" class="hub-ring"/>
-          <circle cx="800" cy="550" r="128" class="hub-ring" opacity="0.35"/>
-          <circle cx="800" cy="550" r="138" class="hub-ring" opacity="0.15"/>
-          <text x="800" y="494" text-anchor="middle" class="hub-label-line1">François</text>
-          <text x="800" y="512" text-anchor="middle" class="hub-label-line1">Hellebuyck</text>
-          <text x="800" y="550" text-anchor="middle" class="hub-label-line2">AI Engineer</text>
-          <text x="800" y="572" text-anchor="middle" class="hub-label-line4">— parcours 2025 → 2026 —</text>
-          <text x="800" y="588" text-anchor="middle" class="hub-label-line4">OpenClassrooms · RNCP 7</text>
+          <circle cx="850" cy="610" r="118" class="hub-core"/>
+          <circle cx="850" cy="610" r="118" class="hub-ring"/>
+          <circle cx="850" cy="610" r="128" class="hub-ring" opacity="0.35"/>
+          <circle cx="850" cy="610" r="138" class="hub-ring" opacity="0.15"/>
+          <text x="850" y="554" text-anchor="middle" class="hub-label-line1">François</text>
+          <text x="850" y="572" text-anchor="middle" class="hub-label-line1">Hellebuyck</text>
+          <text x="850" y="610" text-anchor="middle" class="hub-label-line2">AI Engineer</text>
+          <text x="850" y="632" text-anchor="middle" class="hub-label-line4">— parcours 2025 → 2026 —</text>
+          <text x="850" y="648" text-anchor="middle" class="hub-label-line4">OpenClassrooms · RNCP 7</text>
         </g>
 
       </svg>
@@ -633,22 +684,22 @@
    Carte mentale — données + rendu interactif
    ───────────────────────────────────────────────────────── */
 
-const CX = 800, CY = 550;
-const R_CAT = 235;
-const R_NODE = 470;
+const CX = 850, CY = 610;
+const R_CAT  = 255;
+const R_NODE = 490;
 
 const CATEGORIES = {
-  fondations: { label: "Fondations IA",   full: "Fondations IA",          color: "#34D399", angle: 12.85 },
-  supervise:  { label: "Supervisé",       full: "Apprentissage supervisé", color: "#22D3EE", angle: 64.25 },
-  mlops:      { label: "MLOps",           full: "MLOps & Production",      color: "#60A5FA", angle: 128.6 },
-  methodo:    { label: "Cadrage / Data",  full: "Cadrage & Data Eng",      color: "#A78BFA", angle: 192.85 },
-  vision:     { label: "Vision / RL",     full: "Vision & RL",             color: "#F472B6", angle: 244.25 },
-  genai:      { label: "Generative AI",   full: "Generative AI",           color: "#FBBF24", angle: 308.6 }
+  fondations: { label: "Fondations IA",   full: "Fondations IA",          color: "#34D399", angle: 0   },
+  supervise:  { label: "Supervisé",       full: "Apprentissage supervisé", color: "#22D3EE", angle: 60  },
+  mlops:      { label: "MLOps",           full: "MLOps & Production",      color: "#60A5FA", angle: 120 },
+  methodo:    { label: "Cadrage / Data",  full: "Cadrage & Data Eng",      color: "#A78BFA", angle: 180 },
+  vision:     { label: "Vision / RL",     full: "Vision & RL",             color: "#F472B6", angle: 240 },
+  genai:      { label: "Generative AI",   full: "Generative AI",           color: "#FBBF24", angle: 300 }
 };
 
 const PROJECTS = [
   {
-    num: "P1", angle: 0, cat: "fondations", duration: "40h",
+    num: "P1", angle: 335, cat: "fondations", duration: "40h",
     title: "Requêtez des services IA",
     mission: "Premier projet du parcours : prendre en main un modèle pré-entraîné de segmentation d'images vestimentaires depuis Hugging Face, sécuriser les tokens API, optimiser les images et gérer les erreurs.",
     stack: ["Python", "Jupyter", "Hugging Face", "API REST", "Pillow"],
@@ -660,7 +711,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P2", angle: 25.71, cat: "fondations", duration: "40h",
+    num: "P2", angle: 25, cat: "fondations", duration: "40h",
     title: "Anticipez les besoins en consommations de bâtiments",
     mission: "Prédire la consommation énergétique de bâtiments municipaux (dataset Seattle). Analyse exploratoire complète, feature engineering, sélection et évaluation de plusieurs modèles de régression supervisée.",
     stack: ["scikit-learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
@@ -673,7 +724,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P3", angle: 51.43, cat: "supervise", duration: "50h",
+    num: "P3", angle: 35, cat: "supervise", duration: "50h",
     title: "Classifiez automatiquement des informations",
     mission: "Identifier les causes d'attrition au sein d'une ESN par classification supervisée. Préparation des données RH, gestion du déséquilibre des classes, métriques d'évaluation avancées.",
     stack: ["scikit-learn", "Pandas", "Imbalanced-learn", "Matplotlib"],
@@ -685,7 +736,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P4", angle: 77.14, cat: "supervise", duration: "50h",
+    num: "P4", angle: 85, cat: "supervise", duration: "50h",
     title: "Classifiez automatiquement (partie 2 + SQL)",
     mission: "Prolongement du projet 3 sur le contexte ESN : initiation à la gestion de bases de données et au langage SQL pour exploiter et croiser des données métier dans un pipeline de classification.",
     stack: ["SQL", "scikit-learn", "Pandas", "SQLite"],
@@ -697,7 +748,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P5", angle: 102.86, cat: "mlops", duration: "40h",
+    num: "P5", angle: 90, cat: "mlops", duration: "40h",
     title: "Déployez un modèle de Machine Learning",
     mission: "Mettre un modèle ML en production : développement d'une API FastAPI, tests unitaires avec Pytest, versioning Git/GitHub, conteneurisation Docker et pipeline CI/CD vers Hugging Face Spaces.",
     stack: ["FastAPI", "Pytest", "Docker", "Git", "GitHub Actions", "HF Spaces"],
@@ -710,7 +761,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P6", angle: 128.57, cat: "mlops", duration: "50h",
+    num: "P6", angle: 120, cat: "mlops", duration: "50h",
     title: "Initiez-vous au MLOps — partie 1/2",
     mission: "Modèle de scoring crédit avec gestion rigoureuse du cycle de vie : tracking des expériences MLflow, optimisation des hyperparamètres, ajustement des seuils de décision, justifications métier.",
     stack: ["MLflow", "scikit-learn", "Optuna", "Pandas"],
@@ -723,7 +774,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P8", angle: 154.29, cat: "mlops", duration: "45h",
+    num: "P8", angle: 150, cat: "mlops", duration: "45h",
     title: "Confirmez vos compétences MLOps — partie 2/2",
     mission: "Suite du projet 6 : déploiement du modèle de scoring via API, mise en place du monitoring continu en production, automatisation du pipeline MLOps et interface de démonstration.",
     stack: ["FastAPI", "Streamlit", "Gradio", "Evidently", "Docker", "MLflow"],
@@ -736,7 +787,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P9", angle: 180, cat: "methodo", duration: "45h",
+    num: "P9", angle: 155, cat: "methodo", duration: "45h",
     title: "Réalisez le cadrage d'un projet IA",
     mission: "Cadrage complet d'un projet IA en 3 parties : transformation des besoins métier en solution technique, prototype de faisabilité, identification des opportunités et risques, défense devant des décideurs.",
     stack: ["Méthodologie", "Gouvernance data", "Prototypage", "Pilotage"],
@@ -746,10 +797,11 @@ const PROJECTS = [
       "Prototyper pour confirmer la faisabilité technique",
       "Identifier et évaluer les risques de la solution",
       "Présenter et défendre les choix d'architecture"
-    ]
+    ],
+    github: "https://github.com/hellebuyckf/cadrage_poc/"
   },
   {
-    num: "P12", angle: 205.71, cat: "methodo", duration: "80h",
+    num: "P12", angle: 205, cat: "methodo", duration: "80h",
     title: "Extrayez des données multimodales de sites web",
     mission: "Industrialisation de l'ingestion : pipeline ETL automatisé pour collecter texte + images depuis des sources hétérogènes (APIs, datasets), à destination d'un détecteur de fake news. Orchestration via Apache Airflow.",
     stack: ["Apache Airflow", "Python", "BeautifulSoup", "Requests", "PostgreSQL"],
@@ -762,8 +814,8 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P10", angle: 231.43, cat: "vision", duration: "40h",
-    title: "Labellisez et appliquez des approches semi-supervisées en traitement d'images",
+    num: "P10", angle: 215, cat: "vision", duration: "40h",
+    title: "Labellisez et appliquez des approches semi-supervisées",
     mission: "Analyser des images médicales avec un compromis entre supervision totale et autonomie : extraction de features par modèles pré-entraînés, clustering, application de méthodes semi-supervisées pour exploiter des données non labellisées.",
     stack: ["TensorFlow / Keras", "scikit-learn", "OpenCV", "UMAP", "Hugging Face"],
     skills: [
@@ -774,7 +826,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P11", angle: 257.14, cat: "vision", duration: "80h",
+    num: "P11", angle: 265, cat: "vision", duration: "80h",
     title: "Entraînez votre agent RL",
     mission: "Piloter le module d'atterrissage lunaire « Eagle-1 » par apprentissage par renforcement. Progression Q-table → DQN, agent apprenant par interaction avec un environnement de simulation pour maximiser une récompense cumulative.",
     stack: ["Stable Baselines 3", "Gymnasium", "PyTorch", "TensorBoard"],
@@ -787,7 +839,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P7", angle: 282.86, cat: "genai", duration: "60h",
+    num: "P7", angle: 270, cat: "genai", duration: "60h",
     title: "Concevez et déployez un système RAG",
     mission: "Assistant conversationnel de recommandation d'événements culturels : architecture RAG complète avec LangChain orchestrant Mistral et une base vectorielle FAISS. Pipeline d'automatisation et tests continus de la qualité.",
     stack: ["LangChain", "Mistral", "FAISS", "Hugging Face", "FastAPI"],
@@ -800,7 +852,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P13", angle: 308.57, cat: "genai", duration: "80h",
+    num: "P13", angle: 300, cat: "genai", duration: "80h",
     title: "Mettez en place un Agent IA",
     mission: "Agent IA conversationnel pour l'apprentissage des échecs : orchestration LangGraph pour les workflows de décision, RAG sur Milvus, intégration d'APIs externes via le Model Context Protocol (MCP).",
     stack: ["LangGraph", "LangChain", "Milvus", "MCP", "FastAPI", "Python"],
@@ -813,7 +865,7 @@ const PROJECTS = [
     ]
   },
   {
-    num: "P14", angle: 334.29, cat: "genai", duration: "80h",
+    num: "P14", angle: 330, cat: "genai", duration: "80h",
     title: "Finetunez votre propre LLM",
     mission: "Projet de fin de parcours — POC d'un agent IA de triage médical pour un centre hospitalier : fine-tuning supervisé (SFT) d'un LLM avec LoRA, alignement par Direct Preference Optimization (DPO), livraison d'une API + rapport technique.",
     stack: ["Hugging Face Transformers", "PEFT / LoRA", "TRL (SFT, DPO)", "PyTorch", "FastAPI"],
@@ -836,16 +888,25 @@ function polar(angle, r) {
 /* ───────── Rendu SVG ───────── */
 const NS = "http://www.w3.org/2000/svg";
 
-const $connCat   = document.getElementById("connections-cat");
-const $connProj  = document.getElementById("connections-projects");
-const $cats      = document.getElementById("categories");
-const $projects  = document.getElementById("projects");
+const $connCat  = document.getElementById("connections-cat");
+const $connProj = document.getElementById("connections-projects");
+const $cats     = document.getElementById("categories");
+const $projects = document.getElementById("projects");
 
-// Lignes hub → catégorie (pointillés animés)
+/* État expand / collapse par catégorie */
+const expandedCats = new Set();
+
+/* Index des éléments DOM par catégorie */
+const domBycat = {}; // { catKey: { projWraps: [], connLines: [], toggleEl: null, groupEl: null } }
+Object.keys(CATEGORIES).forEach(k => { domBycat[k] = { projWraps: [], connLines: [], toggleEl: null, groupEl: null }; });
+
+/* ──────────────────────────────────────────────
+   Lignes hub → catégorie (pointillés animés)
+   ────────────────────────────────────────────── */
 Object.entries(CATEGORIES).forEach(([key, cat]) => {
-  const p = polar(cat.angle, R_CAT - 18); // s'arrête au bord intérieur de la pilule
-  const line = document.createElementNS(NS, "path");
-  const hubEdge = polar(cat.angle, 142); // démarre juste après l'anneau du hub
+  const p       = polar(cat.angle, R_CAT - 22); // s'arrête au bord de la pilule (hauteur 44/2=22)
+  const hubEdge = polar(cat.angle, 142);
+  const line    = document.createElementNS(NS, "path");
   line.setAttribute("d", `M ${hubEdge.x} ${hubEdge.y} L ${p.x} ${p.y}`);
   line.setAttribute("class", "conn-cat");
   line.setAttribute("data-cat", key);
@@ -853,187 +914,257 @@ Object.entries(CATEGORIES).forEach(([key, cat]) => {
   $connCat.appendChild(line);
 });
 
-// Lignes catégorie → projets
+/* ──────────────────────────────────────────────
+   Lignes catégorie → projets (cachées au départ)
+   ────────────────────────────────────────────── */
 PROJECTS.forEach(proj => {
-  const cat = CATEGORIES[proj.cat];
-  const start = polar(cat.angle, R_CAT + 28); // sort à l'extérieur de la pastille
-  const end   = polar(proj.angle, R_NODE - 32); // s'arrête au bord du chip
-  // Courbe douce — passe par un point intermédiaire entre les deux rayons
-  const midAngle = (cat.angle + proj.angle) / 2;
-  const mid = polar(midAngle, (R_CAT + R_NODE) / 2);
+  const cat      = CATEGORIES[proj.cat];
+  const start    = polar(cat.angle, R_CAT + 24); // sort juste après la pilule (hauteur 44/2=22 + 2px marge)
+  const end      = polar(proj.angle, R_NODE - 32);
+  let angDiff = ((proj.angle - cat.angle) % 360 + 360) % 360;
+  if (angDiff > 180) angDiff -= 360;
+  const midAngle = cat.angle + angDiff / 2;
+  const mid      = polar(midAngle, (R_CAT + R_NODE) / 2);
+
   const path = document.createElementNS(NS, "path");
   path.setAttribute("d", `M ${start.x} ${start.y} Q ${mid.x} ${mid.y} ${end.x} ${end.y}`);
-  path.setAttribute("class", "conn");
+  path.setAttribute("class", "conn hidden");
   path.setAttribute("data-cat", proj.cat);
   path.style.stroke = cat.color + "55";
   $connProj.appendChild(path);
+
+  domBycat[proj.cat].connLines.push(path);
 });
 
-// Pilules catégories (horizontales, toujours lisibles)
+/* ──────────────────────────────────────────────
+   Pilules catégories — largeur dynamique
+   ────────────────────────────────────────────── */
+const CAT_PAD = 14, CAT_COUNT_R = 13, CAT_TOGGLE_R = 11, CAT_GAP = 10;
+const CAT_PILL_H = 44, CAT_PILL_RX = 22;
+
 Object.entries(CATEGORIES).forEach(([key, cat]) => {
-  const p = polar(cat.angle, R_CAT);
+  const p     = polar(cat.angle, R_CAT);
   const count = PROJECTS.filter(pr => pr.cat === key).length;
+
   const g = document.createElementNS(NS, "g");
   g.setAttribute("class", "cat-group");
   g.setAttribute("data-cat", key);
+  g.setAttribute("tabindex", "0");
+  g.setAttribute("role", "button");
+  g.setAttribute("aria-label", `${cat.full} — cliquer pour déployer`);
   g.setAttribute("transform", `translate(${p.x},${p.y})`);
 
-  // Halo doux
-  const glow = document.createElementNS(NS, "rect");
-  glow.setAttribute("x", -84);
-  glow.setAttribute("y", -22);
-  glow.setAttribute("width", 168);
-  glow.setAttribute("height", 44);
-  glow.setAttribute("rx", 22);
-  glow.setAttribute("fill", cat.color);
-  glow.setAttribute("opacity", 0.18);
-  glow.setAttribute("filter", "url(#softBlur)");
-  g.appendChild(glow);
+  // Insérer dans le DOM avant la mesure
+  $cats.appendChild(g);
 
-  // Pilule horizontale
+  // Label — créé en premier pour mesure
+  const lbl = document.createElementNS(NS, "text");
+  lbl.setAttribute("class", "cat-label");
+  lbl.setAttribute("fill", cat.color);
+  lbl.setAttribute("text-anchor", "start");
+  lbl.textContent = cat.label.toUpperCase();
+  g.appendChild(lbl);
+
+  // Mesure du label
+  const lblW = lbl.getComputedTextLength();
+
+  // Calcul de la largeur totale et des positions
+  const totalW  = CAT_PAD + CAT_COUNT_R * 2 + CAT_GAP + lblW + CAT_GAP + CAT_TOGGLE_R * 2 + CAT_PAD;
+  const halfW   = totalW / 2;
+  const countCx = -halfW + CAT_PAD + CAT_COUNT_R;
+  const lblX    = countCx + CAT_COUNT_R + CAT_GAP;
+  const togCx   = halfW - CAT_PAD - CAT_TOGGLE_R;
+
+  // Positionner le label
+  lbl.setAttribute("x", lblX);
+  lbl.setAttribute("y", 5);
+
+  // Halo doux
+  const glowEl = document.createElementNS(NS, "rect");
+  glowEl.setAttribute("x", -halfW - 6); glowEl.setAttribute("y", -(CAT_PILL_H / 2 + 6));
+  glowEl.setAttribute("width", totalW + 12); glowEl.setAttribute("height", CAT_PILL_H + 12);
+  glowEl.setAttribute("rx", CAT_PILL_RX + 6);
+  glowEl.setAttribute("fill", cat.color);
+  glowEl.setAttribute("opacity", 0.18);
+  glowEl.setAttribute("filter", "url(#softBlur)");
+
+  // Pilule
   const rect = document.createElementNS(NS, "rect");
-  rect.setAttribute("x", -80);
-  rect.setAttribute("y", -18);
-  rect.setAttribute("width", 160);
-  rect.setAttribute("height", 36);
-  rect.setAttribute("rx", 18);
+  rect.setAttribute("x", -halfW); rect.setAttribute("y", -CAT_PILL_H / 2);
+  rect.setAttribute("width", totalW); rect.setAttribute("height", CAT_PILL_H);
+  rect.setAttribute("rx", CAT_PILL_RX);
   rect.setAttribute("class", "cat-bubble");
   rect.setAttribute("stroke", cat.color);
-  g.appendChild(rect);
 
-  // Pastille de compte à gauche dans la pilule
+  // Pastille count
   const numBg = document.createElementNS(NS, "circle");
-  numBg.setAttribute("cx", -60);
-  numBg.setAttribute("cy", 0);
-  numBg.setAttribute("r", 12);
-  numBg.setAttribute("fill", cat.color);
-  numBg.setAttribute("opacity", 0.22);
-  g.appendChild(numBg);
+  numBg.setAttribute("cx", countCx); numBg.setAttribute("cy", 0); numBg.setAttribute("r", CAT_COUNT_R);
+  numBg.setAttribute("fill", cat.color); numBg.setAttribute("opacity", 0.22);
 
   const numText = document.createElementNS(NS, "text");
-  numText.setAttribute("x", -60);
-  numText.setAttribute("y", 3);
+  numText.setAttribute("x", countCx); numText.setAttribute("y", 4);
   numText.setAttribute("text-anchor", "middle");
   numText.setAttribute("class", "cat-count");
   numText.setAttribute("fill", cat.color);
   numText.textContent = String(count).padStart(2, "0");
-  g.appendChild(numText);
 
-  // Libellé de la catégorie à droite
-  const lbl = document.createElementNS(NS, "text");
-  lbl.setAttribute("x", -42);
-  lbl.setAttribute("y", 4);
-  lbl.setAttribute("text-anchor", "start");
-  lbl.setAttribute("class", "cat-label");
-  lbl.setAttribute("fill", cat.color);
-  lbl.textContent = cat.label.toUpperCase();
-  g.appendChild(lbl);
+  // Indicateur +/−
+  const toggleText = document.createElementNS(NS, "text");
+  toggleText.setAttribute("x", togCx); toggleText.setAttribute("y", 6);
+  toggleText.setAttribute("text-anchor", "middle");
+  toggleText.setAttribute("class", "cat-toggle");
+  toggleText.setAttribute("fill", cat.color);
+  toggleText.textContent = "+";
 
-  $cats.appendChild(g);
+  // Ordre SVG : glow → pill → numBg → numText → lbl → toggle
+  g.insertBefore(toggleText, lbl);
+  g.insertBefore(numText,    toggleText);
+  g.insertBefore(numBg,      numText);
+  g.insertBefore(rect,       numBg);
+  g.insertBefore(glowEl,     rect);
+
+  domBycat[key].toggleEl = toggleText;
+  domBycat[key].groupEl  = g;
+
+  g.addEventListener("click", () => toggleCategory(key));
+  g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleCategory(key); } });
 });
 
-// Cartes projet — pill à taille dynamique (mesure via getComputedTextLength)
-const NUM_CX = -52, NUM_R = 15, TEXT_X = NUM_CX + NUM_R + 8; // -29
+/* ──────────────────────────────────────────────
+   Cartes projet — cachées au départ
+   ────────────────────────────────────────────── */
+const NUM_CX = -52, NUM_R = 15, TEXT_X = NUM_CX + NUM_R + 8;
 const PILL_H = 48, PILL_RX = 24;
 const PILL_PAD_L = 10, PILL_PAD_R = 14;
-const pillLeft = NUM_CX - NUM_R - PILL_PAD_L; // -77
-const MAX_TEXT_W = 155; // SVG units — seuil de troncature
+const pillLeft   = NUM_CX - NUM_R - PILL_PAD_L;
+const MAX_TEXT_W = 200;
 
 PROJECTS.forEach(proj => {
-  const p = polar(proj.angle, R_NODE);
+  const p   = polar(proj.angle, R_NODE);
   const cat = CATEGORIES[proj.cat];
 
-  // Wrapper externe : translate uniquement
   const wrap = document.createElementNS(NS, "g");
+  wrap.setAttribute("class", "proj-wrap");
+  wrap.setAttribute("data-cat", proj.cat);
   wrap.setAttribute("transform", `translate(${p.x},${p.y})`);
 
-  // Groupe interne : animation + sémantique
   const g = document.createElementNS(NS, "g");
   g.setAttribute("class", "node-card");
   g.setAttribute("data-num", proj.num);
   g.setAttribute("data-cat", proj.cat);
-  g.setAttribute("tabindex", "0");
+  g.setAttribute("tabindex", "-1");
   g.setAttribute("role", "button");
   g.setAttribute("aria-label", `${proj.num} — ${proj.title}`);
 
-  // Insérer dans le DOM d'abord pour que getComputedTextLength fonctionne
   wrap.appendChild(g);
   $projects.appendChild(wrap);
 
-  // ── Textes (créés en premier pour mesure) ──
   const title = document.createElementNS(NS, "text");
-  title.setAttribute("x", TEXT_X);
-  title.setAttribute("y", -2);
+  title.setAttribute("x", TEXT_X); title.setAttribute("y", -2);
   title.setAttribute("class", "title");
   title.textContent = proj.title;
   g.appendChild(title);
 
-  // Tronquer si nécessaire
   while (title.getComputedTextLength() > MAX_TEXT_W && title.textContent.length > 4) {
     title.textContent = title.textContent.slice(0, -2).trimEnd() + "…";
   }
 
   const sub = document.createElementNS(NS, "text");
-  sub.setAttribute("x", TEXT_X);
-  sub.setAttribute("y", 13);
+  sub.setAttribute("x", TEXT_X); sub.setAttribute("y", 13);
   sub.setAttribute("class", "title-sub");
   sub.textContent = proj.stack[0];
   g.appendChild(sub);
 
-  // ── Calcul de la largeur de la pill selon le texte réel ──
   const textW = Math.max(title.getComputedTextLength(), sub.getComputedTextLength());
   const pillW = TEXT_X + textW + PILL_PAD_R - pillLeft;
 
-  // ── Éléments de fond (insérés avant les textes) ──
-  const glow = document.createElementNS(NS, "rect");
-  glow.setAttribute("x", pillLeft - 4);
-  glow.setAttribute("y", -(PILL_H / 2 + 4));
-  glow.setAttribute("width", pillW + 8);
-  glow.setAttribute("height", PILL_H + 8);
-  glow.setAttribute("rx", PILL_RX + 4);
-  glow.setAttribute("fill", cat.color);
-  glow.setAttribute("class", "glow");
+  const glowEl = document.createElementNS(NS, "rect");
+  glowEl.setAttribute("x", pillLeft - 4); glowEl.setAttribute("y", -(PILL_H / 2 + 4));
+  glowEl.setAttribute("width", pillW + 8); glowEl.setAttribute("height", PILL_H + 8);
+  glowEl.setAttribute("rx", PILL_RX + 4);
+  glowEl.setAttribute("fill", cat.color);
+  glowEl.setAttribute("class", "glow");
 
   const pill = document.createElementNS(NS, "rect");
-  pill.setAttribute("x", pillLeft);
-  pill.setAttribute("y", -PILL_H / 2);
-  pill.setAttribute("width", pillW);
-  pill.setAttribute("height", PILL_H);
+  pill.setAttribute("x", pillLeft); pill.setAttribute("y", -PILL_H / 2);
+  pill.setAttribute("width", pillW); pill.setAttribute("height", PILL_H);
   pill.setAttribute("rx", PILL_RX);
   pill.setAttribute("class", "pill");
   pill.setAttribute("stroke", cat.color + "AA");
 
   const numBg = document.createElementNS(NS, "circle");
-  numBg.setAttribute("cx", NUM_CX);
-  numBg.setAttribute("cy", 0);
-  numBg.setAttribute("r", NUM_R);
-  numBg.setAttribute("fill", cat.color);
-  numBg.setAttribute("opacity", 0.18);
+  numBg.setAttribute("cx", NUM_CX); numBg.setAttribute("cy", 0); numBg.setAttribute("r", NUM_R);
+  numBg.setAttribute("fill", cat.color); numBg.setAttribute("opacity", 0.18);
 
   const numText = document.createElementNS(NS, "text");
-  numText.setAttribute("x", NUM_CX);
-  numText.setAttribute("y", 4);
+  numText.setAttribute("x", NUM_CX); numText.setAttribute("y", 4);
   numText.setAttribute("text-anchor", "middle");
   numText.setAttribute("class", "num");
   numText.setAttribute("fill", cat.color);
   numText.textContent = proj.num;
 
-  // Ordre SVG : glow → pill → numBg → numText → title → sub
   g.insertBefore(numText, title);
-  g.insertBefore(numBg, numText);
-  g.insertBefore(pill, numBg);
-  g.insertBefore(glow, pill);
+  g.insertBefore(numBg,   numText);
+  g.insertBefore(pill,    numBg);
+  g.insertBefore(glowEl,  pill);
 
   g.addEventListener("click", () => openDetails(proj.num));
   g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetails(proj.num); } });
+
+  domBycat[proj.cat].projWraps.push(wrap);
 });
 
-function truncate(str, max) {
-  if (str.length <= max) return str;
-  return str.slice(0, max - 1).trim() + "…";
+/* ──────────────────────────────────────────────
+   Hint initial (disparaît après 4 s)
+   ────────────────────────────────────────────── */
+(function () {
+  const hint = document.createElementNS(NS, "text");
+  hint.setAttribute("x", CX); hint.setAttribute("y", CY + 168);
+  hint.setAttribute("class", "hint");
+  hint.textContent = "↑ Cliquez sur une catégorie pour déployer ses projets";
+  document.getElementById("hub").appendChild(hint);
+})();
+
+/* ──────────────────────────────────────────────
+   Accordéon expand / collapse
+   ────────────────────────────────────────────── */
+function collapseCategory(key) {
+  expandedCats.delete(key);
+  domBycat[key].projWraps.forEach(w => {
+    w.classList.remove("visible");
+    w.querySelector(".node-card").setAttribute("tabindex", "-1");
+  });
+  domBycat[key].connLines.forEach(l => { l.classList.remove("visible"); l.classList.add("hidden"); });
+  domBycat[key].toggleEl.textContent = "+";
+  domBycat[key].groupEl.classList.remove("expanded");
+  domBycat[key].groupEl.setAttribute("aria-label", `${CATEGORIES[key].full} — cliquer pour déployer`);
 }
 
-/* ───────── Détail au clic ───────── */
+function expandCategory(key) {
+  expandedCats.add(key);
+  domBycat[key].projWraps.forEach(w => {
+    w.classList.add("visible");
+    w.querySelector(".node-card").setAttribute("tabindex", "0");
+  });
+  domBycat[key].connLines.forEach(l => { l.classList.add("visible"); l.classList.remove("hidden"); });
+  domBycat[key].toggleEl.textContent = "×";
+  domBycat[key].groupEl.classList.add("expanded");
+  domBycat[key].groupEl.setAttribute("aria-label", `${CATEGORIES[key].full} — cliquer pour replier`);
+}
+
+function toggleCategory(key) {
+  if (expandedCats.has(key)) {
+    collapseCategory(key);
+  } else {
+    // Accordéon : replier toutes les autres catégories ouvertes
+    [...expandedCats].forEach(k => collapseCategory(k));
+    expandCategory(key);
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Détail au clic sur un projet
+   ────────────────────────────────────────────── */
 const $details = document.getElementById("details");
 const $body    = document.getElementById("details-body");
 
@@ -1042,7 +1173,6 @@ function openDetails(num, scroll = true) {
   if (!proj) return;
   const cat = CATEGORIES[proj.cat];
 
-  // Mise à jour visuelle des cartes
   document.querySelectorAll(".node-card").forEach(n => n.classList.remove("active"));
   document.querySelector(`.node-card[data-num="${num}"]`)?.classList.add("active");
 
@@ -1054,6 +1184,7 @@ function openDetails(num, scroll = true) {
       <span class="cat-tag">${cat.full}</span>
       <span class="status">VALIDÉ</span>
       <span class="duration">⧗ ${proj.duration}</span>
+      ${proj.github ? `<a href="${proj.github}" target="_blank" rel="noopener" class="proj-link"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 014 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Découvrir le projet</a>` : ""}
     </div>
     <h2>${escapeHtml(proj.title)}</h2>
     <p class="mission">${escapeHtml(proj.mission)}</p>
@@ -1073,7 +1204,6 @@ function openDetails(num, scroll = true) {
     </div>
   `;
 
-  // Scroll doux (désactivé à l'init pour rester en haut de page)
   if (scroll) $details.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
@@ -1084,9 +1214,6 @@ function escapeHtml(s) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 }
-
-/* Sélection initiale : P14 — sans scroll pour rester en haut de page */
-openDetails("P14", false);
 </script>
 </body>
 </html>
