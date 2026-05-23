@@ -410,12 +410,11 @@ const V2 = () => {
         </div>
         <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: D.gap }}>
           {[
-            { g: 'LLM & IA Générative', items: ['LangChain', 'HuggingFace', 'Fine-tuning', 'RAG', 'ChromaDB', 'Prompt Engineering'] },
-            { g: 'Développement & API', items: ['Python', 'FastAPI', 'Java', 'Spring Batch', 'Bash', 'JavaScript', 'SQL'] },
-            { g: 'DevOps & Administration', items: ['Docker', 'GitHub Actions', 'CI/CD', 'Linux', 'Git', 'Maven', 'Monitoring', 'Supervision'] },
-            { g: 'Data & Big Data', items: ['Apache Spark', 'Kafka', 'Elasticsearch', 'Hadoop', 'PySpark', 'Cloudera CDH', 'Hive', 'Oozie'] },
-            { g: 'Cloud Azure', items: ['IoT Hub', 'Event Hub', 'HDInsight', 'Data Factory', 'Stream Analytics', 'ACR'] },
-            { g: 'Outillage IA & ML', items: ['MLflow', 'LangSmith', 'Scikit-Learn', 'Pandas', 'NumPy', 'Jupyter'] },
+            { g: 'LLM / IA Gen', items: ['LangGraph', 'HuggingFace Transformers', 'PEFT/LoRA', 'Fine-tuning', 'RAG', 'ChromaDB', 'MCP Server', 'Prompt Engineering'] },
+            { g: 'MLOps', items: ['MLflow', 'LangSmith', 'RAGAS', 'FastAPI', 'Docker', 'GitHub Actions', 'CI/CD', 'Azure', 'Monitoring et évaluation LLM'] },
+            { g: 'Langages', items: ['Python', 'SQL', 'Java', 'Spring Batch', 'Bash'] },
+            { g: 'Cloud / DevOps', items: ['Azure IoT Hub', 'Event Hub', 'HDInsight', 'DataFactory', 'Stream Analytics', 'ACR', 'Git', 'Linux'] },
+            { g: 'ML / Analyse', items: ['Scikit-Learn', 'Pandas', 'NumPy', 'Jupyter', 'Évaluation de modèles', 'Gestion dataset'] },
           ].map(g => (
             <div key={g.g} style={{ padding: '24px 0', borderTop: `1px solid ${C.border}` }}>
               <div style={{ fontSize: 17, color: C.accent, fontFamily: vibe.monoFont, letterSpacing: '0.06em', marginBottom: 16 }}>
