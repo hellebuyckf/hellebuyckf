@@ -62,9 +62,9 @@ const VIBES = {
 };
 
 const DENSITY = {
-  spacious: { padX: 88, sectionY: 160, heroY: 120, h1: 114, h2: 54, gap: 32, projGap: 32 },
-  standard: { padX: 64, sectionY: 120, heroY: 80,  h1: 98, h2: 46, gap: 24, projGap: 24 },
-  dense:    { padX: 44, sectionY: 72,  heroY: 56,  h1: 78,  h2: 38, gap: 16, projGap: 18 },
+  spacious: { padX: 88, sectionY: 160, heroY: 120, h1: 110, h2: 50, gap: 32, projGap: 32 },
+  standard: { padX: 64, sectionY: 120, heroY: 80,  h1: 94, h2: 42, gap: 24, projGap: 24 },
+  dense:    { padX: 44, sectionY: 72,  heroY: 56,  h1: 74,  h2: 34, gap: 16, projGap: 18 },
 };
 
 const V2 = () => {
@@ -152,11 +152,11 @@ const V2 = () => {
           <div style={{
             width: 32, height: 32, border: `1.5px solid ${C.accent}`, borderRadius: vibe.cornerRound,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontFamily: vibe.monoFont, fontSize: 19, color: C.accent, fontWeight: 600,
+            fontFamily: vibe.monoFont, fontSize: 15, color: C.accent, fontWeight: 600,
           }}>fh</div>
-          <div style={{ fontSize: 22, fontWeight: 500, letterSpacing: '-0.01em' }}>François Hellebuyck</div>
+          <div style={{ fontSize: 18, fontWeight: 500, letterSpacing: '-0.01em' }}>François Hellebuyck</div>
         </div>
-        <div style={{ display: 'flex', gap: 32, fontSize: 21, color: C.dim }}>
+        <div style={{ display: 'flex', gap: 32, fontSize: 17, color: C.dim }}>
           {[['#about','À propos'],['#projects','Projets'],['#skills','Compétences'],['#experience','Expérience'],['#contact','Contact']].map(([href, label]) => (
             <a key={href} href={href} style={{ color: 'inherit', textDecoration: 'none', transition: 'color 200ms' }}
               onMouseEnter={e => e.target.style.color = C.accent}
@@ -165,7 +165,7 @@ const V2 = () => {
         </div>
         <button onClick={() => { const t = dark ? 'light' : 'dark'; setTheme(t); localStorage.setItem('pf-theme', t); }} style={{
           background: C.panel, border: `1px solid ${C.border}`, color: C.text,
-          padding: '8px 14px', fontFamily: vibe.monoFont, fontSize: 19,
+          padding: '8px 14px', fontFamily: vibe.monoFont, fontSize: 15,
           cursor: 'pointer', borderRadius: 999, letterSpacing: '0.06em',
         }}>{dark ? '☾' : '☼'} {dark ? 'sombre' : 'clair'}</button>
       </nav>
@@ -177,7 +177,7 @@ const V2 = () => {
           position: 'absolute', top: 18, right: D.padX,
           display: 'inline-flex', alignItems: 'center', gap: 10,
           padding: '6px 14px', borderRadius: 999, border: `1px solid ${C.border}`,
-          fontFamily: vibe.monoFont, fontSize: 19, color: C.accent,
+          fontFamily: vibe.monoFont, fontSize: 15, color: C.accent,
           letterSpacing: '0.06em',
         }}>
           <span style={{
@@ -198,17 +198,17 @@ const V2 = () => {
                 fontWeight: 400,
               }}>{F.highlight}</span>.
             </h1>
-            <div style={{ fontSize: 30, color: C.dim, marginTop: 28, maxWidth: 600, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 26, color: C.dim, marginTop: 28, maxWidth: 600, lineHeight: 1.5 }}>
               {F.tagline}
             </div>
             <div style={{ display: 'flex', gap: 14, marginTop: 40 }}>
               <a href="#projects" style={{
                 background: C.accent, color: C.bg, padding: '14px 22px',
-                fontSize: 22, fontWeight: 600, textDecoration: 'none', borderRadius: vibe.radius,
+                fontSize: 18, fontWeight: 600, textDecoration: 'none', borderRadius: vibe.radius,
                 display: 'inline-flex', alignItems: 'center', gap: 10,
               }}>Découvrir les projets <span>→</span></a>
               <a style={{
-                color: C.text, padding: '14px 22px', fontSize: 22, fontWeight: 500,
+                color: C.text, padding: '14px 22px', fontSize: 18, fontWeight: 500,
                 textDecoration: 'none', border: `1px solid ${C.border}`, borderRadius: vibe.radius,
               }} href="https://linkedin.com/in/fhellebuyck" target="_blank" rel="noopener">linkedin.com/in/fhellebuyck</a>
             </div>
@@ -218,7 +218,7 @@ const V2 = () => {
                 height: 40, borderRadius: 999, padding: '0 14px',
                 border: `1px solid ${C.border}`, background: C.panel,
                 color: C.dim, textDecoration: 'none', transition: 'color 200ms, border-color 200ms',
-                fontFamily: vibe.monoFont, fontSize: 17,
+                fontFamily: vibe.monoFont, fontSize: 13,
               }}
               onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.borderColor = C.accent; }}
               onMouseLeave={e => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.border; }}
@@ -233,7 +233,7 @@ const V2 = () => {
                 height: 40, borderRadius: 999, padding: '0 14px',
                 border: `1px solid ${C.border}`, background: C.panel,
                 color: C.dim, textDecoration: 'none', transition: 'color 200ms, border-color 200ms',
-                fontFamily: vibe.monoFont, fontSize: 17,
+                fontFamily: vibe.monoFont, fontSize: 13,
               }}
               onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.borderColor = C.accent; }}
               onMouseLeave={e => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.border; }}
@@ -246,7 +246,7 @@ const V2 = () => {
                 height: 40, borderRadius: 999, padding: '0 14px',
                 border: `1px solid ${C.border}`, background: C.panel,
                 color: C.dim, textDecoration: 'none', transition: 'color 200ms, border-color 200ms',
-                fontFamily: vibe.monoFont, fontSize: 17,
+                fontFamily: vibe.monoFont, fontSize: 13,
               }}
               onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.borderColor = C.accent; }}
               onMouseLeave={e => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.border; }}
@@ -291,7 +291,7 @@ const V2 = () => {
             </div>
             <div style={{
               position: 'absolute', bottom: -20, left: '50%', transform: 'translateX(-50%)',
-              fontFamily: vibe.monoFont, fontSize: 18, color: C.dim,
+              fontFamily: vibe.monoFont, fontSize: 14, color: C.dim,
               letterSpacing: '0.16em', whiteSpace: 'nowrap',
             }}>● {F.chip}</div>
           </div>
@@ -306,13 +306,13 @@ const V2 = () => {
             {F.h2}
           </h2>
           <div>
-            <p style={{ fontSize: 25, lineHeight: 1.7, color: C.text, margin: '0 0 18px' }}>
+            <p style={{ fontSize: 21, lineHeight: 1.7, color: C.text, margin: '0 0 18px' }}>
               Aujourd'hui ingénieur IA, j'arrive avec plus d'une décennie d'expérience comme architecte applicatif sur des plateformes data critiques pour de grands comptes : conception, intégration, exploitation — des systèmes que l'on n'a pas le droit de casser.
             </p>
-            <p style={{ fontSize: 25, lineHeight: 1.7, color: C.dim, margin: '0 0 18px' }}>
+            <p style={{ fontSize: 21, lineHeight: 1.7, color: C.dim, margin: '0 0 18px' }}>
               Je porte cette discipline dans l'IA appliquée : faire fonctionner des modèles est aujourd'hui accessible — les rendre <span style={{ color: C.text }}>fiables, évaluables, traçables, déployables</span>, ne l'est pas.
             </p>
-            <p style={{ fontSize: 25, lineHeight: 1.7, color: C.dim, margin: 0 }}>
+            <p style={{ fontSize: 21, lineHeight: 1.7, color: C.dim, margin: 0 }}>
               C'est précisément cet espace que j'occupe.
             </p>
           </div>
@@ -338,41 +338,41 @@ const V2 = () => {
               </svg>
 
               <div style={{
-                fontFamily: vibe.monoFont, fontSize: 19, color: C.accent,
+                fontFamily: vibe.monoFont, fontSize: 15, color: C.accent,
                 letterSpacing: '0.08em', marginBottom: 24,
               }}>{p.tag.toUpperCase()}</div>
 
-              <h3 style={{ fontSize: 48, fontWeight: 500, margin: 0, letterSpacing: '-0.02em', fontFamily: vibe.headFont }}>{p.title}</h3>
-              <div style={{ fontSize: 24, color: C.dim, marginTop: 8 }}>{p.sub}</div>
+              <h3 style={{ fontSize: 44, fontWeight: 500, margin: 0, letterSpacing: '-0.02em', fontFamily: vibe.headFont }}>{p.title}</h3>
+              <div style={{ fontSize: 20, color: C.dim, marginTop: 8 }}>{p.sub}</div>
 
-              <p style={{ fontSize: 23, lineHeight: 1.65, marginTop: 24, color: C.text }}>{p.desc}</p>
+              <p style={{ fontSize: 19, lineHeight: 1.65, marginTop: 24, color: C.text }}>{p.desc}</p>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 32 }}>
                 <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', maxWidth: 320 }}>
                   {p.stack.map(s => (
                     <span key={s} style={{
-                      fontFamily: vibe.monoFont, fontSize: 18,
+                      fontFamily: vibe.monoFont, fontSize: 14,
                       padding: '4px 9px', border: `1px solid ${C.border}`, color: C.dim,
                       letterSpacing: '0.06em', borderRadius: 999,
                     }}>{s}</span>
                   ))}
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: 36, color: C.accent, fontWeight: 500, fontFamily: vibe.monoFont }}>{p.metric.v}</div>
-                  <div style={{ fontSize: 18, color: C.dim, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{p.metric.l}</div>
+                  <div style={{ fontSize: 32, color: C.accent, fontWeight: 500, fontFamily: vibe.monoFont }}>{p.metric.v}</div>
+                  <div style={{ fontSize: 14, color: C.dim, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{p.metric.l}</div>
                 </div>
               </div>
               {p.migration && (
                 <div style={{ marginTop: 20, borderTop: `1px solid ${C.border}`, paddingTop: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ fontFamily: vibe.monoFont, fontSize: 17, color: C.dim, letterSpacing: '0.04em' }}>Projet en cours de migration vers le portfolio</span>
+                  <span style={{ fontFamily: vibe.monoFont, fontSize: 13, color: C.dim, letterSpacing: '0.04em' }}>Projet en cours de migration vers le portfolio</span>
                 </div>
               )}
               {p.github && (
                 <div style={{ marginTop: 20, borderTop: `1px solid ${C.border}`, paddingTop: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ fontFamily: vibe.monoFont, fontSize: 17, color: C.dim, letterSpacing: '0.04em' }}>Découvrir le projet :</span>
+                  <span style={{ fontFamily: vibe.monoFont, fontSize: 13, color: C.dim, letterSpacing: '0.04em' }}>Découvrir le projet :</span>
                   <a href={p.github} target="_blank" rel="noopener" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
-                    color: C.dim, textDecoration: 'none', fontSize: 18,
+                    color: C.dim, textDecoration: 'none', fontSize: 14,
                     fontFamily: vibe.monoFont, letterSpacing: '0.04em',
                     transition: 'color 200ms',
                   }}
@@ -396,7 +396,7 @@ const V2 = () => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <Eyebrow C={C} vibe={vibe} num="03" label="Stack technique" />
           <a href="carte-mentale.html" style={{
-            fontFamily: vibe.monoFont, fontSize: 19, letterSpacing: '0.12em',
+            fontFamily: vibe.monoFont, fontSize: 15, letterSpacing: '0.12em',
             color: C.accent, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
             padding: '6px 12px', border: `1px solid ${C.accent}44`, borderRadius: 999,
             transition: 'all .2s ease',
@@ -418,13 +418,13 @@ const V2 = () => {
             { g: 'Outillage IA & ML', items: ['MLflow', 'LangSmith', 'Scikit-Learn', 'Pandas', 'NumPy', 'Jupyter'] },
           ].map(g => (
             <div key={g.g} style={{ padding: '24px 0', borderTop: `1px solid ${C.border}` }}>
-              <div style={{ fontSize: 21, color: C.accent, fontFamily: vibe.monoFont, letterSpacing: '0.06em', marginBottom: 16 }}>
+              <div style={{ fontSize: 17, color: C.accent, fontFamily: vibe.monoFont, letterSpacing: '0.06em', marginBottom: 16 }}>
                 {g.g}
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {g.items.map(i => (
                   <span key={i} style={{
-                    fontSize: 22, padding: '6px 12px', background: C.panel,
+                    fontSize: 18, padding: '6px 12px', background: C.panel,
                     border: `1px solid ${C.border}`, borderRadius: vibe.radius, color: C.text,
                   }}>{i}</span>
                 ))}
@@ -445,13 +445,13 @@ const V2 = () => {
             { y: '1997 → 2012', t: 'Architecte Technique / Expert JEE / Ingénieur', sub: <><span style={{ color: 'rgb(100% 80% 0%)' }}>Logica</span> (acquis par <span style={{ color: 'rgb(88.3% 13.1% 21.4%)' }}>CGI</span>)</>, d: 'Paris · Secteurs : Télécom, Finance, Énergie, Industrie. Développement, expertise JEE, architecture applicative.' },
           ].map((e, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '120px 40px 1fr', gap: 24, paddingBottom: 40, alignItems: 'start' }}>
-              <div style={{ fontFamily: vibe.monoFont, fontSize: 20, color: C.accent, letterSpacing: '0.06em', paddingTop: 6 }}>{e.y}</div>
+              <div style={{ fontFamily: vibe.monoFont, fontSize: 16, color: C.accent, letterSpacing: '0.06em', paddingTop: 6 }}>{e.y}</div>
               <div style={{ position: 'relative', paddingTop: 8 }}>
                 <div style={{ width: 11, height: 11, borderRadius: '50%', background: C.bg, border: `2px solid ${C.accent}` }} />
               </div>
               <div>
-                <div style={{ fontSize: 32, fontWeight: 500, fontFamily: vibe.headFont }}>{e.t}{e.sub ? <span style={{ color: e.subColor || C.dim, fontWeight: 400, fontSize: 26 }}> · {e.sub}</span> : null}</div>
-                <div style={{ fontSize: 23, color: C.dim, marginTop: 8, lineHeight: 1.6, maxWidth: 700 }}>{e.d}</div>
+                <div style={{ fontSize: 28, fontWeight: 500, fontFamily: vibe.headFont }}>{e.t}{e.sub ? <span style={{ color: e.subColor || C.dim, fontWeight: 400, fontSize: 22 }}> · {e.sub}</span> : null}</div>
+                <div style={{ fontSize: 19, color: C.dim, marginTop: 8, lineHeight: 1.6, maxWidth: 700 }}>{e.d}</div>
               </div>
             </div>
           ))}
@@ -465,22 +465,22 @@ const V2 = () => {
         </svg>
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
           <Eyebrow C={C} vibe={vibe} num="05" label="Contact" centered />
-          <h2 style={{ fontSize: 80, fontWeight: 500, letterSpacing: '-0.03em', margin: '24px 0', lineHeight: 1.05, fontFamily: vibe.headFont }}>
+          <h2 style={{ fontSize: 76, fontWeight: 500, letterSpacing: '-0.03em', margin: '24px 0', lineHeight: 1.05, fontFamily: vibe.headFont }}>
             {F.cta}<br />
             <span style={{ color: C.accent, fontStyle: vibe.italic ? 'italic' : 'normal', fontWeight: 400 }}>{F.cta2}</span>
           </h2>
-          <p style={{ fontSize: 26, color: C.dim, lineHeight: 1.6 }}>
+          <p style={{ fontSize: 22, color: C.dim, lineHeight: 1.6 }}>
             {F.contactSub}
           </p>
           <a style={{
             display: 'inline-flex', alignItems: 'center', gap: 12, marginTop: 32,
             background: C.accent, color: C.bg, padding: '16px 28px', borderRadius: vibe.radius,
-            fontSize: 23, fontWeight: 600, textDecoration: 'none',
+            fontSize: 19, fontWeight: 600, textDecoration: 'none',
           }} href="https://linkedin.com/in/fhellebuyck" target="_blank" rel="noopener">linkedin.com/in/fhellebuyck →</a>
         </div>
         <div style={{
           marginTop: 80, display: 'flex', justifyContent: 'space-between',
-          fontFamily: vibe.monoFont, fontSize: 18, color: C.dim,
+          fontFamily: vibe.monoFont, fontSize: 14, color: C.dim,
           letterSpacing: '0.08em', position: 'relative', zIndex: 1,
         }}>
           <span>© {new Date().getFullYear()} FRANÇOIS HELLEBUYCK</span>
@@ -540,7 +540,7 @@ const V2 = () => {
 const Eyebrow = ({ C, vibe, num, label, centered }) => (
   <div style={{
     display: 'inline-flex', alignItems: 'center', gap: 14,
-    fontFamily: vibe.monoFont, fontSize: 19, letterSpacing: '0.16em',
+    fontFamily: vibe.monoFont, fontSize: 15, letterSpacing: '0.16em',
     ...(centered ? { justifyContent: 'center', width: '100%' } : {}),
   }}>
     <span style={{ color: C.accent }}>/{num}</span>
